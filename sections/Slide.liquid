@@ -99,9 +99,34 @@
     position: relative;
     width: 100%;
     max-width: 900px;
-    margin-left: 350px;
-    margin-bottom:80px;
+    margin: 0 auto; /* Center the container */
+    margin-bottom: 80px;
     overflow: hidden;
+  }
+  
+  @media (max-width: 1200px) {
+    .carousel-container {
+      max-width: 80%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .carousel-container {
+      max-width: 90%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-container {
+      max-width: 95%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .carousel-container {
+      max-width: 100%;
+      margin-bottom: 40px;
+    }
   }
 
   .carousel {
