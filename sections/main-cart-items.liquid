@@ -740,20 +740,3 @@
       padding-right:50px !important;
     }
 </style>
-<script>
-  function updateCartPrice() {
-  // Make an AJAX request to fetch the updated cart information
-  Shopify.cart.getCart((cart) => {
-    // Extract the cart price from the response data
-    const cartPrice = cart.total_price;
-    
-    // Update the displayed price element on the page
-    document.getElementById('totals__subtotal').innerHTML = Shopify.formatMoney(cartPrice);
-  });
-}
-
-// Call the updateCartPrice function after adding an item to the cart
-Shopify.onItemAdded = (lineItem) => {
-  // Call the function to update the cart price
-  updateCartPrice();
-};</script>
