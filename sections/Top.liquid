@@ -1,0 +1,166 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+
+<div class="custom-container">
+  <div class="custom-row">
+    <div class="links-section">
+      <div class="links-container">
+        {% for block in section.blocks %}
+          {% if block.type == 'header_link' %}
+            {% assign page_name = block.settings.header_link | split: '/' | last | capitalize %}
+            <a class="custom-link" href="{{ block.settings.header_link }}">{{ page_name }}</a>
+            {% unless forloop.last %}
+              <span class="separator">|</span>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="icons-section">
+      <div class="icons-container">
+        {% if section.settings.facebook_url %}
+          <a class="custom-icon" href="{{ section.settings.facebook_url }}">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        {% endif %}
+        {% if section.settings.twitter_url %}
+          <a class="custom-icon" href="{{ section.settings.twitter_url }}">
+            <i class="fab fa-twitter"></i>
+          </a>
+        {% endif %}
+        {% if section.settings.linkedin_url %}
+          <a class="custom-icon" href="{{ section.settings.linkedin_url }}">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        {% endif %}
+        {% if section.settings.instagram_url %}
+          <a class="custom-icon" href="{{ section.settings.instagram_url }}">
+            <i class="fab fa-instagram"></i>
+          </a>
+        {% endif %}
+        {% if section.settings.youtube_url %}
+          <a class="custom-icon" href="{{ section.settings.youtube_url }}">
+            <i class="fab fa-youtube"></i>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Top Header",
+  "settings": [
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+
+
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "header_link",
+      "name": "Header Link",
+      "settings": [
+        {
+          "type": "url",
+          "id": "header_link",
+          "label": "Header Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top header",
+      "category": "Header",
+      "blocks": [
+        {
+          "type": "header_link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<style>
+    .custom-container {
+    background-color: #EDF1FF !important;
+    padding: 10px 20px;
+  }
+
+  .custom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .links-section {
+    flex: 1;
+  }
+
+  .links-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-link {
+    color: #000;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+  .separator {
+    color: #666;
+    margin: 0 10px;
+  }
+
+  .icons-section {
+    flex: 1;
+    text-align: right;
+  }
+
+  .icons-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .custom-icon {
+    color: #000;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+
+  .custom-icon i {
+    font-size: 1.2em;
+  }
+</style>

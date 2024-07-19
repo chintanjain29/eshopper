@@ -1,0 +1,97 @@
+<div class="slider-container">
+  <div class="slider-wrapper">
+    {% for block in section.blocks %}
+      <div class="slide">
+        <img src="{{ block.settings.image.src | image_url }}">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "vendor",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Image",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "imgpcker"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .slider-container {
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding:30px;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    transition: transform 1s ease;
+  }
+
+  .slide {
+    min-width: calc(100% / 6);
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #EDF1FF;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const sliderWrapper = document.querySelector(".slider-wrapper");
+  const slides = document.querySelectorAll(".slide");
+  const totalSlides = slides.length;
+  const visibleSlides = 6; // Number of visible slides
+  const slideWidth = 100 / visibleSlides; // Width of each slide in percentage
+  let currentIndex = 0;
+
+  // Function to update slider position
+  function updateSliderPosition() {
+    const offset = -currentIndex * slideWidth;
+    sliderWrapper.style.transform = `translateX(${offset}%)`;
+  }
+
+  // Function to show the next slide
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSliderPosition();
+  }
+
+  // Function to initialize the slider
+  function initializeSlider() {
+    // Clone initial slides for looping effect
+    for (let i = 0; i < visibleSlides; i++) {
+      const clone = slides[i % totalSlides].cloneNode(true);
+      sliderWrapper.appendChild(clone);
+    }
+  }
+
+  initializeSlider();
+  setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+});
+</script>

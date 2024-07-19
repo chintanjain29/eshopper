@@ -1,0 +1,357 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  integrity="sha512-M3QHc0fE9u1onu7Z6ZKgkN5qOQ1JG+XKSe+EvsRpf69Cr5SnA6vKjbGV7CMs+fAMwxeLvY4Kv2XpliV7Sx7ffg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+
+<div class="footer-container">
+  <div class="main-sections">
+    <div class="store-info-icon-text shop-name">
+      <a href="{{ routes.root_url }}" style="text-decoration:none;">
+        <h1><span>E</span>{{ shop.name }}</h1>
+      </a>
+      <p>{{ section.settings.store_description }}</p>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'svg_icon_with_text' %}
+          <div class="icon-container">
+            <span class="icon-svg">{{ block.settings.svg_icon }}</span>
+            <span class="icon-text">{{ block.settings.icon_text }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="quick-links-section">
+      {% for block in section.blocks %}
+        {% if block.type == 'link_list' %}
+          <div class="quick-links">
+            <h3 class="accordion-header">{{ block.settings.title }}</h3>
+            <ul class="accordion-content">
+              {% for link in block.settings.menu.links %}
+                <li>
+                  <i class="fas fa-chevron-right"></i>
+                  <!-- Font Awesome icon example -->
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="newsletter">
+      {% for block in section.blocks %}
+        {% if block.type == 'newsletter' %}
+          <div>
+            <h3>{{ block.settings.title }}</h3>
+            <form action="#" method="post">
+              <input type="email" name="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer-section">
+    <div class="footer-content">
+      <p class="footer-copyright">
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ section.settings.store_name }}. All Rights Reserved <b><a>chintan jain</a></b
+        >.
+      </p>
+      {% if section.settings.payment_methods_image %}
+        <div class="footer-payment">
+          {{
+            section.settings.payment_methods_image
+            | image_url: width: 200
+            | image_tag: class: 'img-fluid', alt: 'Payment Methods'
+          }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "New Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "store_name",
+      "label": "Store Name",
+      "default": "EShopper"
+    },
+    {
+      "type": "text",
+      "id": "store_description",
+      "label": "Store Description",
+      "default": "Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum dolore amet erat."
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_methods_image",
+      "label": "Payment Methods Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Quick Links",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Newsletter"
+        }
+      ]
+    },
+    {
+      "type": "svg_icon_with_text",
+      "name": "SVG Icon with Text",
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon Code",
+          "default": "<svg><!-- Your SVG code here --></svg>"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon Text",
+          "default": "Your text here"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #EDF1FF;
+    border-top: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif; /* Set the font family for the whole container */
+  }
+
+  .main-sections {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .store-info-icon-text {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .store-info-icon-text h2 {
+    font-size: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .store-info-icon-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+  }
+
+  .icon-text {
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+    font-weight: normal;
+  }
+
+  .svg-icon-text-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-svg {
+    margin-right: 8px;
+  }
+
+  .quick-links-section {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .quick-links {
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+
+  .quick-links h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .quick-links ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .quick-links li {
+    margin-bottom: 5px;
+  }
+
+  .quick-links a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .quick-links li i {
+    margin-right: 8px; /* Adjust spacing between icon and text */
+  }
+
+  .newsletter {
+    flex: 1;
+  }
+
+  .newsletter h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .newsletter form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .newsletter input[type=email] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .newsletter button[type=submit] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c5837c;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color change */
+  }
+
+  .newsletter button[type=submit]:hover {
+    background-color: #D19C97; /* Change background color on hover */
+    color: #ccc; /* Change text color on hover */
+  }
+
+  .payment-methods {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .payment-methods img {
+    max-width: 100%;
+  }
+
+  .footer-section .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    padding: 20px;
+    margin: 0 20px;
+  }
+
+  .footer-section .footer-copyright {
+    flex: 1;
+    text-align: left;
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+  }
+
+  .footer-section .footer-payment {
+    flex: 1;
+    text-align: right;
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+  }
+
+  .footer-section .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .shop-name {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+  }
+
+  .shop-name h1 {
+    margin: 0;
+    font-size: 3rem; /* Adjust the size as needed */
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+  }
+
+  .shop-name h1 span {
+    color: #D19C97; /* Primary color */
+    background-color: #EDF1FF; /* Background color for the span */
+    border: 1px solid #fff; /* Border color for the span */
+    padding: 0 10px; /* Adjust padding as needed */
+    font-family: 'Poppins', sans-serif; /* Set the font family */
+  }
+
+  .shop-name a {
+    text-decoration: none; /* Ensures the link has no underline */
+    color: inherit; /* Ensures the link inherits the text color */
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .icon-svg {
+    margin-right: 10px;
+  }
+</style>

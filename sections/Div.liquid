@@ -1,0 +1,82 @@
+<div class="svg-icon-text-container">
+  {% for block in section.blocks %}
+    {% if block.type == 'svg_icon_with_text' %}
+      <div class="icon-text-block">
+        <div class="icon-container">
+          <span class="icon-svg">{{ block.settings.svg_icon }}</span>
+          <span class="icon-text">{{ block.settings.icon_text }}</span>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "SVG Icon with Text",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "svg_icon_with_text",
+      "name": "SVG Icon with Text",
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon Code",
+          "default": "<svg><!-- Your SVG code here --></svg>"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon Text",
+          "default": "Your text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icons",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+<style>
+   .svg-icon-text-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap */
+    gap: 16px; /* Adjust spacing between boxes */
+    padding: 20px; /* Padding for the container */
+    margin: 20px 0; /* Margin for the container */
+    justify-content: center; /* Center content horizontally */
+    font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+    font-size: 30px;
+    font-weight:bold;
+  }
+
+  .icon-text-block {
+    flex: 0 0 calc(25% - 32px); /* Adjust size of each box */
+    box-sizing: border-box;
+    border:1px solid #EDF1FF ;
+    padding: 20px; /* Box padding */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-svg {
+    margin-right: 8px; /* Adjust spacing as needed */
+  }
+
+  .icon-text {
+    font-size: 16px; /* Adjust text size as needed */
+    color:black;
+  }
+</style>

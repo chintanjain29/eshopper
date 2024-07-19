@@ -1,0 +1,116 @@
+<!-- Add the slick-theme.css if you want default styling -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+  defer="defer"
+>
+<!-- Add the slick-theme.css if you want default styling -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+  defer="defer"
+>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+  async="async"
+  defer="defer"
+></script>
+<div class="page-carousel2" style="margin:50px; padding:50px auto">
+  <div class="page-carousel">
+    <h2>
+      <span>{{ section.settings.title }} </span>
+    </h2>
+  </div>
+  <div class="content">
+    {% assign collection = collections[section.settings.collection] %}
+    {%- for product in collection.products -%}
+      {% assign lazy_load = false %}
+      {%- if forloop.index > 2 -%}
+        {%- assign lazy_load = true -%}
+      {%- endif -%}
+      <li
+        class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: {{ forloop.index }};"
+        {% endif %}
+      >
+        {% render 'card-product',
+          card_product: product,
+          media_aspect_ratio: section.settings.image_ratio,
+          image_shape: section.settings.image_shape,
+          show_secondary_image: section.settings.show_secondary_image,
+          show_vendor: section.settings.show_vendor,
+          show_rating: section.settings.show_rating,
+          lazy_load: lazy_load,
+          skip_styles: skip_card_product_styles,
+          quick_add: section.settings.quick_add,
+          section_id: section.id
+        %}
+      </li>
+      {%- assign skip_card_product_styles = true -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "product-carousel",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "t:sections.featured-collection.settings.title.default",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "product-carousel"
+    }
+  ]
+}
+{% endschema %}
+<style>
+   .page-carousel {
+        text-align: center;
+        padding: 0 10px;
+        position: relative; /* Ensure relative positioning for absolute element */
+      }
+
+    .page-carousel span {
+      position: relative;
+      background: #fff;
+      z-index: 1;
+    }
+    .page-carousel:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 30%;
+    width: 40%;
+    height: 2px;
+    margin-top: -1px;
+    background: #1C1C1C;
+  }
+</style>
+<script>
+    $('.content').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  });
+</script>

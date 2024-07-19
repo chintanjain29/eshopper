@@ -1,0 +1,86 @@
+<div class="main">
+  {% for block in section.blocks %}
+    {% if block.type == 'custom' %}
+      <div class="custom-contact">
+        <h2>{{ block.settings.head }}</h2>
+        <p>{{ block.settings.txtarea }}</p>
+      </div>
+    {% endif %}
+
+    {% if block.type == 'svg_icon_with_text' %}
+      <div>
+        <span>{{ block.settings.svg_icon }}</span>
+        <span>{{ block.settings.icon_text }} </span>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom-contact",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "custom",
+      "name": "text",
+      "settings": [
+         {
+          "type": "text",
+           "id": "head",
+           "label": "heading"
+
+        },
+        {
+          "type": "textarea",
+          "id": "txtarea",
+        "label": "texbox"
+        }
+      ]
+    },
+       {
+      "type": "svg_icon_with_text",
+      "name": "SVG Icon with Text",
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon Code",
+          "default": "<svg><!-- Your SVG code here --></svg>"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon Text",
+          "default": "Your text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "contact",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .main{
+    margin:0 auto;
+  }
+  .custom-contact {
+    margin: 20px 0;
+  }
+
+  .custom-contact h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .custom-contact p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+</style>

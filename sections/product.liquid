@@ -1,0 +1,155 @@
+{% schema %}
+{
+  "name": "Tabbed Content",
+  "settings": [],
+  "blocks": [
+     {
+      "type": "@app"
+    },
+    {
+      "type": "tab_content",
+      "name": "Tab Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "New Tab"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_content",
+          "label": "Tab Content",
+          "default": "Tab content goes here."
+        },
+        {
+          "type": "liquid",
+          "id": "review_html",
+          "label": "review"
+        }
+      ]
+    },
+    {
+      "type": "review_tab",
+      "name": "Reviews",
+      "settings": [
+        {
+          "type": "text",
+          "id": "review_tab_title",
+          "label": "Tab Title",
+          "default": "Reviews"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Tabs",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "tab_content"
+        },
+        {
+          "type": "tab_content"
+        },
+        {
+          "type": "review_tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .tabs {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  .tab {
+    position: relative;
+    padding: 10px 20px;
+    margin-right: 2px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  .tab.active {
+    color: #D19C97;
+    font-weight: bold;
+  }
+  .tab-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: -1px;
+    text-align: left;
+  }
+  .tab-content > div {
+    display: none;
+  }
+  .tab-content > div.active {
+    display: block;
+  }
+  .tab-content p {
+    font-size: 1.25em;
+    word-wrap: break-word;
+  }
+</style>
+
+<div class="tabs">
+  {% for block in section.blocks %}
+    <div class="tab {% if forloop.first %}active{% endif %}" data-tab="tab{{ forloop.index }}">
+      {{ block.settings.tab_title }}
+    </div>
+  {% endfor %}
+</div>
+<div class="tab-content">
+  {% for block in section.blocks %}
+    <div id="tab{{ forloop.index }}" class="tab-pane {% if forloop.first %}active{% endif %}">
+      {% if block.type == 'tab_content' %}
+        {% if block.settings.app %}
+          <h3>Review</h3>
+          <div>{{ block.settings.app | escape }}</div>
+        {% else %}
+          <h3>{{ block.settings.tab_title }}</h3>
+          <div>{{ block.settings.tab_content }}</div>
+          <div>{{ block.settings.review_html }}</div>
+        {% endif %}
+      {% elsif block.type == '@app' %}
+        {% render block %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.tab-content > div').forEach(content => content.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+
+      // Initialize the review app if the Reviews tab is selected
+      if (tab.getAttribute('data-tab').includes('review')) {
+        // Assuming the review app requires a manual initialization function
+        if (typeof ShopifyProductReviews !== 'undefined') {
+          ShopifyProductReviews.init();
+        }
+      }
+    });
+  });
+</script>
+
+<!-- Include the review app's JavaScript -->
+<script src="https://path.to/review-app.js" defer="defer"></script>

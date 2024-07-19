@@ -1,0 +1,155 @@
+<div class="custom-block" style="background-color: #EDF1FF !important;">
+  {% for block in section.blocks %}
+    {% if block.type == 'email_input' %}
+      <div class="section-email">
+        <h2>
+          <span>{{ block.settings.heading_text }}</span>
+        </h2>
+      </div>
+      <p>{{ block.settings.additional_text }}</p>
+      <form
+        action="/contact#contact_form"
+        method="post"
+        id="contact_form"
+        accept-charset="UTF-8"
+        class="contact-form"
+      >
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <div class="input-group">
+          <input
+            type="email"
+            name="contact[email]"
+            placeholder="{{ block.settings.email }}"
+            required
+            class="email-input"
+          >
+          <button type="submit" class="subscribe-button">{{ block.settings.button_text }}</button>
+        </div>
+      </form>
+    {% endif %}
+  {% endfor %}
+</div>
+<style>
+  .custom-block {
+    padding: 20px;
+    text-align: center; /* Center align content */
+    font-family: 'Poppins', sans-serif;
+    background-color: #EDF1FF !important; /* Background color */
+  }
+
+  .custom-block h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .custom-block p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    /* Ensure additional text wraps */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align form elements */
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align input and button */
+    margin-bottom: 10px; /* Space between form elements */
+  }
+
+  .email-input {
+    padding: 8px; /* Adjust padding */
+    border: none; /* Remove border */
+    width: calc(100% - 100px); /* Adjust width to fit container */
+    box-sizing: border-box; /* Include padding and border in width */
+  }
+
+  .subscribe-button {
+    padding: 8px 24px; /* Adjust padding */
+    border: 1px solid transparent; /* Hide button border */
+    background-color: #D19C97;
+    color: #000; /* Initial text color */
+    cursor: pointer;
+    border-radius: 0; /* Remove border radius */
+    margin-left: -1px; /* Align button with input */
+    transition: color 0.3s; /* Smooth transition for text color only */
+  }
+
+  .subscribe-button:hover {
+    color: #fff; /* Text color on hover */
+  }
+       .section-email {
+        text-align: center;
+        padding: 0 10px;
+        position: relative; /* Ensure relative positioning for absolute element */
+      }
+
+    .section-email span {
+      position: relative;
+      background: #EDF1FF;
+      z-index: 1;
+    }
+    .section-email::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 35%;
+    width: 30%;
+    height: 2px;
+    margin-top: -1px;
+    background: #1C1C1C;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Block",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "email_input",
+      "name": "Email Input",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_text",
+          "label": "Heading Text",
+          "default": "Subscribe to our newsletter"
+        },
+        {
+          "type": "text",
+          "id": "email_placeholder",
+          "label": "Email Placeholder",
+          "default": "Enter your email"
+        },
+        {
+          "type": "text",
+          "id": "additional_text",
+          "label": "Additional Text",
+          "default": "Stay updated with our latest offers"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Subscribe"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email-block",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

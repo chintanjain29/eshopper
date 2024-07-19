@@ -1,0 +1,172 @@
+{% schema %}
+{
+  "name": "offer block",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "offer",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "offer_image",
+          "label": "Offer Image"
+        },
+        {
+          "type": "text",
+          "id": "offer_title",
+          "label": "Offer Title"
+        },
+        {
+          "type": "text",
+          "id": "offer_subtitle",
+          "label": "Offer Subtitle"
+        },
+        {
+          "type": "url",
+          "id": "offer_link",
+          "label": "Offer Link"
+        },
+        {
+          "type": "text",
+          "id": "offer_button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "radio",
+          "id": "logo_aligment",
+          "label": "Logo alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ],
+          "default": "left"
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}
+<div class="main-container">
+  <div class="offer-container">
+    {% for block in section.blocks %}
+      <div class="offer-block">
+        <div class="offer-row {% if block.settings.logo_aligment == 'right' %}reverse{% endif %}">
+          <div class="offer-image">
+            <div class="image-container">
+              <img src="{{ block.settings.offer_image | image_url }}" alt="" class="offer-image">
+            </div>
+          </div>
+          <div class="offer-details">
+            <p class="offer-subtitle">{{ block.settings.offer_subtitle }}</p>
+            <h2 class="offer-title">{{ block.settings.offer_title }}</h2>
+            <a href="{{ block.settings.offer_link }}" class="offer-button">{{ block.settings.offer_button_text }}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .main-container {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .offer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .offer-block {
+    flex: 0 0 calc(50% - 10px);
+    background-color: #EDF1FF;
+    padding-left: 20px;
+    padding-top:20px;
+    box-sizing: border-box;
+  }
+
+  .offer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .offer-row.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .offer-image, .offer-details {
+    flex: 1;
+  }
+
+  .image-container {
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .offer-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .offer-title {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+
+  .offer-subtitle {
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    color: #c5837c;
+  }
+
+  .offer-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #c5837c;
+    color: #c5837c;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .offer-button:hover {
+    background-color: #D19C97;
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    .offer-block {
+      flex: 0 0 100%;
+    }
+
+    .offer-row, .offer-row.reverse {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .offer-image, .offer-details {
+      width: 100%;
+    }
+
+    .image-container {
+      height: auto;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+</style>

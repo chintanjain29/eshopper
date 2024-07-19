@@ -1,0 +1,137 @@
+<body>
+  <header class="header">
+    <div class="shop-name2">
+      <h1>
+        <a href="{{ routes.root_url }}"> <span>E</span>{{ shop.name }} </a>
+      </h1>
+    </div>
+
+    <div class="search-container">
+      <form action="/search" method="get" role="search" class="search-form">
+        <div class="search-wrapper">
+          <input type="text" placeholder="Search products..." name="q" class="search-input">
+          <button type="submit" class="search-button">
+            {% render 'icon-searrch' %}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="icons">
+      <a href="#" title="Liked Products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+          <path fill="#D19C97" stroke="#D19C97" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/>
+        </svg>
+        <span class="badge">0</span>
+        <!-- Example badge for liked products count -->
+      </a>
+      <a href="{{ routes.cart_url }}" title="Cart Items">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512">
+          <circle cx="176" cy="416" r="32" fill="#D19C97"/><circle cx="400" cy="416" r="32" fill="#D19C97"/><path fill="#D19C97" d="M456.8 120.78a23.92 23.92 0 0 0-18.56-8.78H133.89l-6.13-34.78A16 16 0 0 0 112 64H48a16 16 0 0 0 0 32h50.58l45.66 258.78A16 16 0 0 0 160 368h256a16 16 0 0 0 0-32H173.42l-5.64-32h241.66A24.07 24.07 0 0 0 433 284.71l28.8-144a24 24 0 0 0-5-19.93"/>
+        </svg>
+        <span class="badge">{{ cart.item_count }}</span>
+        <!-- Example badge for cart items count -->
+      </a>
+    </div>
+  </header>
+</body>
+
+<style>
+     body {
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+       background-color: #f8f9fa; /* Light background color for the body */
+     }
+
+     .header {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       padding: 20px;
+       background-color: #fff; /* White background color for the header */
+       color: #333; /* Dark text color for the header */
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for better visibility */
+     }
+
+    .shop-name2 {
+     font-size: 24px;
+     font-weight: bold;
+   }
+
+   .shop-name2 h1 {
+     margin: 0;
+     font-size: 3rem; /* Adjust the size as needed */
+   }
+
+   .shop-name2 h1 a {
+     text-decoration: none; /* Ensures the link has no underline */
+     color: inherit; /* Ensures the link inherits the text color */
+   }
+
+   .shop-name2 h1 a span {
+     color: #D19C97; /* Primary color */
+     background-color: #fff; /* Background color for the span */
+     border: 1px solid #EDF1FF; /* Border color for the span */
+     padding: 0 10px; /* Adjust padding as needed */
+   }
+
+  .search-container {
+     display: flex;
+     justify-content: center;
+     margin: 20px 0;
+   }
+
+   .search-form {
+     width: 100%;
+     max-width: 800px;
+   }
+
+   .search-wrapper {
+     display: flex;
+     border: 1px solid #ccc;
+     overflow: hidden;
+   }
+
+   .search-input {
+     flex-grow: 1;
+     padding: 10px 15px;
+     border: none;
+     font-size: 16px;
+   }
+
+   .search-button {
+     background-color: #f4f4f4;
+     border: none;
+     padding: 10px 15px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+   }
+
+   .search-button:hover {
+     background-color: #e0e0e0;
+   }
+
+     .icons {
+       display: flex;
+       align-items: center;
+     }
+
+     .icons a {
+       color: #333;
+       text-decoration: none;
+       margin-left: 10px; /* Adjust margin for spacing */
+       font-size: 20px;
+       position: relative;
+       border: 1px solid; /* Border color for the box */
+       padding: 8px; /* Padding inside the box */
+
+     }
+
+     .icons a .badge {
+       position: absolute;
+       top: -8px;
+       right: -8px;
+       padding: 2px 5px;
+       font-size: 12px;
+     }
+</style>
