@@ -512,7 +512,7 @@
         <h3 style="background:#EDF1FF; font-size:2rem;">Cart Summary</h3>
         <div class="totals__subtotal">
           <span>Subtotal</span>
-          <span>{{ cart.original_total_price | money_with_currency }}</span>
+          <span>{{ cart.original_total_price | plus:1000 | money_with_currency }}</span>
         </div>
         <div class="totals__subtotal">
           <span>Shipping</span>
