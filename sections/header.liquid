@@ -706,88 +706,49 @@
 
   
 <style>
-.custom-nav {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    position: relative;
-    z-index: 1000;
-    font-family: 'Poppins', sans-serif;
+  .custom-nav {
+    background-color: #d19c97;
+    width: 100%;
+    max-width: 300px;
 }
 
 .custom-nav-toggle {
-    background-color: #D19C97;
-    color: #fff;
-    border: none;
-    height: 55px;
-    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #d19c97;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.custom-nav-toggle h4 {
-    margin: 0;
-    text-transform: uppercase;
-    text-align: left;
-    font-size: 1.25rem; 
-    flex-grow: 1;
-}
-
-.custom-nav-toggle i {
-    color: #000; 
-    padding-left:35px;
-    transition: transform 0.3s;
-    font-size: 16px;
 }
 
 .custom-nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: none;
+    background-color: white;
 }
 
 .custom-nav-list.show {
     display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    background-color: #fff;
-    padding: 10px;
-    width: 100%;
 }
 
 .custom-nav-item {
-    position: relative;
-    margin-bottom: 8px;
-      border:1px solid #EDF1FF;
+    border-bottom: 1px solid #eee;
 }
 
 .custom-nav-link {
-    color: #000;
-    text-decoration: none;
-    padding: 8px 12px;
     display: block;
-    transition: color 0.3s;
-    font-size: 1.2rem; /* Increased font size */
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
 }
 
 .custom-nav-link:hover {
-    color: #D19C97;
+    background-color: #f8f9fa;
 }
 
 .custom-dropdown-menu {
     display: none;
-    position: relative;
-    background-color: #EDF1FF;
-    list-style: none;
-    padding: 10px 20px;
-    margin: 0;
+    padding-left: 20px;
 }
 
 .custom-nav-item.active .custom-dropdown-menu {
@@ -795,19 +756,15 @@
 }
 
 .custom-dropdown-item {
-    color: #000;
-    text-decoration: none;
-    padding: 8px 12px;
     display: block;
-    transition: color 0.3s;
-    font-size: 1.2rem; /* Increased font size */
+    padding: 5px 10px;
+    color: #666;
+    text-decoration: none;
 }
 
 .custom-dropdown-item:hover {
-    color: #D19C97;
-    background-color: #EDF1FF;
+    color: #d19c97;
 }
-
 
     .login-register-container {
         display: flex;
