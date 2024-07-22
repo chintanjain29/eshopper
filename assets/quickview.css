@@ -1,5 +1,6 @@
 .quickview_popup {
-  position: fixed;
+  display: none;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -11,6 +12,11 @@
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
+  z-index: 1000;
+}
+
+.quickview_popup.active {
+  display: block;
 }
 
 .product-main {
@@ -23,7 +29,7 @@
 }
 
 .custom-quick-add {
-  background-color: #D19C97;
+  background-color: #d19c97;
   color: white;
   border: none;
   padding: 10px 20px;
