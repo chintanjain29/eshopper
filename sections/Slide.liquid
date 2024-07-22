@@ -97,9 +97,11 @@
 <style>
   .carousel-container {
     position: relative;
-    max-width: none; /* Remove max-width */
-    margin-left: 0; /* Remove left margin */
-    margin-bottom:80px;
+    width: calc(100% - 40px); /* Adjust width to account for left margin */
+    max-width: none;
+    margin-left: 20px; /* Add left margin */
+    padding-left: 20px; /* Add left padding */
+    margin-bottom: 80px;
     overflow: hidden;
   }
   .carousel {
