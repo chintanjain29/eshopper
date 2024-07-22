@@ -315,6 +315,21 @@
     },
     "offer_zDdyRc": {
       "type": "offer",
+      "blocks": {
+        "text_CAqBAT": {
+          "type": "text",
+          "settings": {
+            "offer_title": "",
+            "offer_subtitle": "",
+            "offer_link": "",
+            "offer_button_text": "",
+            "logo_aligment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "text_CAqBAT"
+      ],
       "disabled": true,
       "settings": {
       }
