@@ -207,7 +207,7 @@
     justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 0;
-    font-size: 0; 
+    font-size: 0; /* Removes any text node spacing */
 }
 
 .icon-container > * {
@@ -216,6 +216,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* If your icons are images or have a specific width, you might need this */
+.icon-container img,
+.icon-container svg {
+    display: block; /* Removes bottom space in inline elements */
+    width: auto; /* Adjust if needed */
+    height: auto; /* Adjust if needed */
 }
 
   .icon-svg {
