@@ -186,12 +186,12 @@
           </a>
       {% endcomment %}
 {% if linklists.categories.links.size > 0 %}
-  <nav class="custom-nav">
+<nav class="custom-nav">
     <div class="custom-nav-toggle">
         <h4>Categories</h4>
         <i class="fa fa-angle-down"></i>
     </div>
-    <div class="custom-nav-list show">
+    <div class="custom-nav-list">
         {% for link in linklists.categories.links %}
             <div class="custom-nav-item">
                 <a href="{{ link.url }}" class="custom-nav-link">{{ link.title }}</a>
@@ -706,49 +706,88 @@
 
   
 <style>
-  .custom-nav {
-    background-color: #d19c97;
-    width: 100%;
-    max-width: 300px;
+.custom-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
 }
 
 .custom-nav-toggle {
+    background-color: #D19C97;
+    color: #fff;
+    border: none;
+    height: 55px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #d19c97;
-    color: white;
+    justify-content: space-between;
+    padding: 0 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-nav-toggle h4 {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 1.25rem; 
+    flex-grow: 1;
+}
+
+.custom-nav-toggle i {
+    color: #000; 
+    padding-left:35px;
+    transition: transform 0.3s;
+    font-size: 16px;
 }
 
 .custom-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: none;
-    background-color: white;
 }
 
 .custom-nav-list.show {
     display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    padding: 10px;
+    width: 100%;
 }
 
 .custom-nav-item {
-    border-bottom: 1px solid #eee;
+    position: relative;
+    margin-bottom: 8px;
+      border:1px solid #EDF1FF;
 }
 
 .custom-nav-link {
-    display: block;
-    padding: 10px 20px;
-    color: #333;
+    color: #000;
     text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    transition: color 0.3s;
+    font-size: 1.2rem; /* Increased font size */
 }
 
 .custom-nav-link:hover {
-    background-color: #f8f9fa;
+    color: #D19C97;
 }
 
 .custom-dropdown-menu {
     display: none;
-    padding-left: 20px;
+    position: relative;
+    background-color: #EDF1FF;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
 }
 
 .custom-nav-item.active .custom-dropdown-menu {
@@ -756,15 +795,19 @@
 }
 
 .custom-dropdown-item {
-    display: block;
-    padding: 5px 10px;
-    color: #666;
+    color: #000;
     text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    transition: color 0.3s;
+    font-size: 1.2rem; /* Increased font size */
 }
 
 .custom-dropdown-item:hover {
-    color: #d19c97;
+    color: #D19C97;
+    background-color: #EDF1FF;
 }
+
 
     .login-register-container {
         display: flex;
@@ -786,33 +829,41 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const navToggle = document.querySelector('.custom-nav-toggle');
-      const navList = document.querySelector('.custom-nav-list');
-      
-      if (navToggle && navList) {
-          navToggle.addEventListener('click', function() {
-              navList.classList.toggle('show');
-              navToggle.querySelector('i').classList.toggle('fa-angle-up');
-              navToggle.querySelector('i').classList.toggle('fa-angle-down');
-          });
-      }
-      
-      const navItems = document.querySelectorAll('.custom-nav-item');
-      navItems.forEach(item => {
-          const subMenu = item.querySelector('.custom-dropdown-menu');
-          if (subMenu) {
-              const link = item.querySelector('.custom-nav-link');
-              link.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  item.classList.toggle('active');
-                  navItems.forEach(otherItem => {
-                      if (otherItem !== item) {
-                          otherItem.classList.remove('active');
-                      }
-                  });
-              });
-          }
-      });
-  });
-  </script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.custom-nav-toggle');
+    const navList = document.querySelector('.custom-nav-list');
+
+    if (navToggle && navList) {
+        navToggle.addEventListener('click', function() {
+            navList.classList.toggle('show');
+            navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
+                navList.classList.remove('show');
+                navToggle.querySelector('i').classList.remove('fa-angle-up'); // Ensure the icon class is reset
+            }
+        });
+    }
+
+    // Toggle sublinks
+    const navItems = document.querySelectorAll('.custom-nav-item');
+    navItems.forEach(item => {
+        const subMenu = item.querySelector('.custom-dropdown-menu');
+        if (subMenu) {
+            const link = item.querySelector('.custom-nav-link');
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                item.classList.toggle('active');
+                navItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        }
+    });
+});
+</script>
