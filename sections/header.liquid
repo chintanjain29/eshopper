@@ -832,21 +832,38 @@
   document.addEventListener('DOMContentLoaded', function() {
       const navToggle = document.querySelector('.custom-nav-toggle');
       const navList = document.querySelector('.custom-nav-list');
+      let lastScrollTop = 0;
+      
+      function toggleNav(show) {
+          navList.classList.toggle('show', show);
+          navToggle.querySelector('i').classList.toggle('fa-angle-down', !show);
+          navToggle.querySelector('i').classList.toggle('fa-angle-up', show);
+      }
       
       if (navToggle && navList) {
           navToggle.addEventListener('click', function() {
-              navList.classList.toggle('show');
-              navToggle.querySelector('i').classList.toggle('fa-angle-down');
-              navToggle.querySelector('i').classList.toggle('fa-angle-up');
+              toggleNav(!navList.classList.contains('show'));
           });
           
           // Close dropdown when clicking outside
           document.addEventListener('click', function(event) {
               if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
-                  navList.classList.remove('show');
-                  navToggle.querySelector('i').classList.remove('fa-angle-up');
-                  navToggle.querySelector('i').classList.add('fa-angle-down');
+                  toggleNav(false);
               }
+          });
+          
+          // Handle scroll
+          window.addEventListener('scroll', function() {
+              let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+              let quarterHeight = window.innerHeight / 4;
+              
+              if (scrollTop > quarterHeight && lastScrollTop <= quarterHeight) {
+                  toggleNav(false);
+              } else if (scrollTop <= quarterHeight && lastScrollTop > quarterHeight) {
+                  toggleNav(true);
+              }
+              
+              lastScrollTop = scrollTop;
           });
       }
       
