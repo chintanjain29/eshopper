@@ -834,7 +834,8 @@
   document.addEventListener('DOMContentLoaded', function() {
       const navToggle = document.querySelector('.custom-nav-toggle');
       const navList = document.querySelector('.custom-nav-list');
-      let lastScrollTop = 0;
+      const contentStart = document.getElementById('content-start');
+      let isAutoScrollClose = true;
       
       function toggleNav(show) {
           navList.classList.toggle('show', show);
@@ -842,9 +843,10 @@
           navToggle.querySelector('i').classList.toggle('fa-angle-up', show);
       }
       
-      if (navToggle && navList) {
+      if (navToggle && navList && contentStart) {
           navToggle.addEventListener('click', function() {
               toggleNav(!navList.classList.contains('show'));
+              isAutoScrollClose = false; // Disable auto-close on manual toggle
           });
           
           // Close dropdown when clicking outside
@@ -856,16 +858,16 @@
           
           // Handle scroll
           window.addEventListener('scroll', function() {
-              let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-              let quarterHeight = window.innerHeight / 4;
+              if (!isAutoScrollClose) return; // Skip if auto-close is disabled
               
-              if (scrollTop > quarterHeight && lastScrollTop <= quarterHeight) {
+              const contentStartPosition = contentStart.getBoundingClientRect().top;
+              const navBottom = navList.getBoundingClientRect().bottom;
+              
+              if (contentStartPosition <= navBottom) {
                   toggleNav(false);
-              } else if (scrollTop <= quarterHeight && lastScrollTop > quarterHeight) {
+              } else {
                   toggleNav(true);
               }
-              
-              lastScrollTop = scrollTop;
           });
       }
       
