@@ -184,14 +184,23 @@
   }
 
   @media (max-width: 768px) {
+    .carousel-slide img {
+      height: 50vh; /* Adjust height for smaller screens */
+    }
     .carousel-content h2 {
       font-size: 1.5em;
     }
-
     .carousel-content p {
       font-size: 1em;
     }
   }
+
+  @media (max-width: 480px) {
+    .carousel-slide img {
+      height: 30vh; /* Further adjust height for very small screens */
+    }
+  }
+
 </style>
 
 <script>
