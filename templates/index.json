@@ -315,6 +315,7 @@
     },
     "offer_zDdyRc": {
       "type": "offer",
+      "disabled": true,
       "settings": {
       }
     }
