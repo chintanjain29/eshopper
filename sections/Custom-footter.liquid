@@ -17,8 +17,8 @@
       {% for block in section.blocks %}
         {% if block.type == 'svg_icon_with_text' %}
           <div class="icon-container">
-            <span class="icon-svg"><a>{{ block.settings.svg_icon }}</a></span>
-            <span class="icon-text"><a>{{ block.settings.icon_text }}</a></span>
+            <span class="icon-svg">{{ block.settings.svg_icon }}</span>
+            <span class="icon-text">{{ block.settings.icon_text }}</span>
           </div>
         {% endif %}
       {% endfor %}
@@ -190,7 +190,7 @@
     font-weight: normal;
   }
 
-  .icon-text span a {
+  .icon-text {
     font-size: 14px;
     font-family: 'Poppins', sans-serif; /* Set the font family */
     font-weight: normal;
