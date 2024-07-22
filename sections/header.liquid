@@ -186,12 +186,12 @@
           </a>
       {% endcomment %}
 {% if linklists.categories.links.size > 0 %}
-<nav class="custom-nav">
+  <nav class="custom-nav">
     <div class="custom-nav-toggle">
         <h4>Categories</h4>
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-up"></i>
     </div>
-    <div class="custom-nav-list">
+    <div class="custom-nav-list show">
         {% for link in linklists.categories.links %}
             <div class="custom-nav-item">
                 <a href="{{ link.url }}" class="custom-nav-link">{{ link.title }}</a>
