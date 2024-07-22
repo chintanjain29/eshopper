@@ -172,3 +172,90 @@
     align-self: center;
   }
 }
+
+
+/* 
+.quickview_popup {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.quickview_popup.active {
+  display: block;
+}
+
+.product-main {
+  display: flex;
+  gap: 20px;
+}
+
+.product-media, .pro-information {
+  flex: 1;
+}
+
+.custom-quick-add {
+  background-color: #d19c97;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;s
+}
+
+.main-options label {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.main-options input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  outline: none;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+.main-options input[type="radio"]:checked {
+  background-color: #D19C97;
+}
+
+.main-options input[type="radio"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.main-options label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+} */
