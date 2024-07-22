@@ -789,51 +789,22 @@
   document.addEventListener('DOMContentLoaded', function() {
       const navToggle = document.querySelector('.custom-nav-toggle');
       const navList = document.querySelector('.custom-nav-list');
-      const contentStart = document.getElementById('content-start');
-      let isAutoScrollClose = true;
       
-      function toggleNav(show) {
-          navList.classList.toggle('show', show);
-          navToggle.querySelector('i').classList.toggle('fa-angle-down', !show);
-          navToggle.querySelector('i').classList.toggle('fa-angle-up', show);
-      }
-      
-      if (navToggle && navList && contentStart) {
+      if (navToggle && navList) {
           navToggle.addEventListener('click', function() {
-              toggleNav(!navList.classList.contains('show'));
-              isAutoScrollClose = false; // Disable auto-close on manual toggle
-          });
-          
-          // Close dropdown when clicking outside
-          document.addEventListener('click', function(event) {
-              if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
-                  toggleNav(false);
-              }
-          });
-          
-          // Handle scroll
-          window.addEventListener('scroll', function() {
-              if (!isAutoScrollClose) return; // Skip if auto-close is disabled
-              
-              const contentStartPosition = contentStart.getBoundingClientRect().top;
-              const navBottom = navList.getBoundingClientRect().bottom;
-              
-              if (contentStartPosition <= navBottom) {
-                  toggleNav(false);
-              } else {
-                  toggleNav(true);
-              }
+              navList.classList.toggle('show');
+              navToggle.querySelector('i').classList.toggle('fa-angle-up');
+              navToggle.querySelector('i').classList.toggle('fa-angle-down');
           });
       }
       
-      // Toggle sublinks
       const navItems = document.querySelectorAll('.custom-nav-item');
       navItems.forEach(item => {
           const subMenu = item.querySelector('.custom-dropdown-menu');
           if (subMenu) {
               const link = item.querySelector('.custom-nav-link');
               link.addEventListener('click', function(event) {
-                  event.preventDefault(); // Prevent default link behavior
+                  event.preventDefault();
                   item.classList.toggle('active');
                   navItems.forEach(otherItem => {
                       if (otherItem !== item) {
