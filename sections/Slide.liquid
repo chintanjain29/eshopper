@@ -107,11 +107,11 @@
     transition: transform 0.5s ease-in-out;
   }
 
-  .carousel-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
+  .carousel-slide img {
+    width: 100%;
+    height: 100vh; /* Set height to full viewport height */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+    display: block;
   }
 
   .carousel-slide img {
