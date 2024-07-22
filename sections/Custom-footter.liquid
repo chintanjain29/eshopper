@@ -18,7 +18,7 @@
         {% if block.type == 'svg_icon_with_text' %}
           <div class="icon-container">
             <span class="icon-svg"><a>{{ block.settings.svg_icon }}</a></span>
-            <span class="icon-text">{{ block.settings.icon_text }}</span>
+            <span class="icon-text"><a>{{ block.settings.icon_text }}</a></span>
           </div>
         {% endif %}
       {% endfor %}
