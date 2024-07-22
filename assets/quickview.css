@@ -1,5 +1,4 @@
-/* Popup Overlay */
-.quickview_popup {
+/* .quickview_popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +11,6 @@
   z-index: 9999;
 }
 
-/* Popup Inner Content */
 .quickview_popup .quickview_pro_inner {
   background: #fff;
   padding: 20px;
@@ -27,7 +25,6 @@
   align-items: flex-start;
 }
 
-/* Popup Fade-in Animation */
 @keyframes popup-fade-in {
   from {
     transform: scale(0.9);
@@ -39,7 +36,6 @@
   }
 }
 
-/* Close Button */
 .quickview_popup .close-btn {
   position: absolute;
   top: 10px;
@@ -52,7 +48,6 @@
   font-size: 20px;
 }
 
-/* Product Main Container */
 .product-main {
   display: flex;
   flex-direction: row;
@@ -60,7 +55,6 @@
   width: 100%;
 }
 
-/* Product Image */
 .product-media {
   margin-right: 20px;
 }
@@ -70,7 +64,6 @@
   border-radius: 10px;
 }
 
-/* Product Details */
 .pro-information {
   text-align: left;
 }
@@ -87,7 +80,6 @@
   margin-bottom: 20px;
 }
 
-/* Options Styling */
 .main-options {
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +113,6 @@
   color: #fff;
 }
 
-/* Add to Cart Button */
 .custom-quick-add {
   background: #D19C97;
   color: #fff;
@@ -139,7 +130,6 @@
   background: #b97b72;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
   .quickview_popup .quickview_pro_inner {
     flex-direction: column;
@@ -171,10 +161,10 @@
     font-size: 16px;
     align-self: center;
   }
-}
+} */
 
 
-/* 
+
 .quickview_popup {
   display: none;
   position: absolute;
@@ -258,4 +248,4 @@
   margin-right: 10px;
   margin-bottom: 5px;
   cursor: pointer;
-} */
+}
