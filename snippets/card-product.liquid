@@ -67,7 +67,7 @@
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
             <div class="media media--transparent media--hover-effect">
-              <a class="try" style="z-index:-10px">{% render 'wish' %}</a>
+              <a class="try" href="www.google.com" style="z-index:-10px">{% render 'wish' %}</a>
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
                 srcset="
