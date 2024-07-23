@@ -266,6 +266,12 @@
       "Top": {
         "type": "Top",
         "blocks": {
+          "header_link_ay6daU": {
+            "type": "header_link",
+            "settings": {
+              "header_link": "shopify:\/\/pages\/faq"
+            }
+          },
           "header_link_nRjbDq": {
             "type": "header_link",
             "settings": {
@@ -277,18 +283,12 @@
             "settings": {
               "header_link": "shopify:\/\/pages\/contact-1"
             }
-          },
-          "header_link_ay6daU": {
-            "type": "header_link",
-            "settings": {
-              "header_link": "shopify:\/\/pages\/faq"
-            }
           }
         },
         "block_order": [
+          "header_link_ay6daU",
           "header_link_nRjbDq",
-          "header_link_exRLTK",
-          "header_link_ay6daU"
+          "header_link_exRLTK"
         ],
         "settings": {
           "facebook_url": "https:\/\/www.facebook.com",
