@@ -46,7 +46,7 @@
  $(document).ready(function(){
     {%  for product in collections.all.products %}
      console.log('{{ product.title }}')
-     var wishId =   localStorage.setItem("wishId-{{ productId }}" , wishlistId )
+     var wishId =   localStorage.setItem("wishId-{{ productId }}")
     {% endfor %}
 });
 </script>
