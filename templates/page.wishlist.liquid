@@ -1,3 +1,33 @@
+<style>
+    .custom-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px; /* Minimum height */
+    }
+  
+    .custom-heading {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem; /* Adjust margin bottom as needed */
+    }
+  
+    .custom-breadcrumb {
+        display: inline-flex;
+    }
+  
+    .custom-breadcrumb a {
+        text-decoration: none; /* Remove default underline */
+        color: inherit; /* Inherit text color */
+        transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition for color and underline */
+    }
+  
+    .custom-breadcrumb a:hover {
+        color: #D19C97; /* Change color on hover */
+        border-bottom: 1px solid #D19C97; /* Underline on hover */
+    }
+</style>
 <div class="custom-container bg-secondary mb-5">
     <div class="custom-content">
       <h1 class="custom-heading">{{ page.title }}</h1>
