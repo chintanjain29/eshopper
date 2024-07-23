@@ -48,7 +48,11 @@
      var wishid =   localStorage.getItem("wishId-{{ product.id }}");
      console.log(wishid);
       if(wishid == '{{ product.id }}'){
-      var wishGridId = `<h2>{{ product.title }}</h2>`
+      var wishGridId = `
+                <div class="wishlist-grid">
+                
+                </div>
+                `;
     
       $('.wishlist-row').append(wishGridId);
     }
