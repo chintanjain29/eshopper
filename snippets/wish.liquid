@@ -45,11 +45,9 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const wishlistButton = document.querySelector('.wishlist-button');
-        
-        wishlistButton.addEventListener('click', () => {
-          wishlistButton.classList.toggle('active');
-        });
-      });
+   $(document).ready(function(){
+    $('#wishlist-{{ productId }}').click(function(){
+    alert('ok')
+    });
+});
 </script>
