@@ -45,6 +45,7 @@
       assign ratio = 1
     endif
   -%}
+  <button class="wishlist-button" data-product-id="{{ product.id }}">Add to Wishlist</button>
   <div class="card-wrapper product-card-wrapper underline-links-hover" style="border:1px solid #EDF1FF; margin:5px">
     <div
       class="
@@ -90,7 +91,7 @@
                 height="{{ card_product.featured_media.height }}"
               >
               {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
-              <button class="wishlist-button" data-product-id="{{ product.id }}">Add to Wishlist</button>
+              
               {%- if card_product.media[1] != null and show_secondary_image -%}
                 <img
                   srcset="
