@@ -47,7 +47,8 @@
 <script>
    $(document).ready(function(){
     $('#wishlist-{{ productId }}').click(function(){
-    let wishlistId ='{{ productId }}'
+    let wishlistId ='{{ productId }}';
+    localStorage.setItem("wishId-{{ productId }}")
     });
 });
 </script>
