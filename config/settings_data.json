@@ -266,12 +266,6 @@
       "Top": {
         "type": "Top",
         "blocks": {
-          "header_link_LWGiaF": {
-            "type": "header_link",
-            "settings": {
-              "header_link": "shopify:\/\/pages\/faq"
-            }
-          },
           "header_link_nRjbDq": {
             "type": "header_link",
             "settings": {
@@ -286,7 +280,6 @@
           }
         },
         "block_order": [
-          "header_link_LWGiaF",
           "header_link_nRjbDq",
           "header_link_exRLTK"
         ],
