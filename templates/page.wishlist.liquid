@@ -46,7 +46,7 @@
  $(document).ready(function(){
     {%  for product in collections.all.products %}
      var wishId =   localStorage.setItem("wishId-{{ product.id }}");
-     console.log(wishId)
+     console.log("wishId");
     {% endfor %}
 
 });
