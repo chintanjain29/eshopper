@@ -38,3 +38,17 @@
       </div>
     </div>
   </div>
+  {% layout 'theme.liquid' %}
+
+<div class="page-width">
+  <h1>{{ page.title }}</h1>
+  <div id="wishlist-container" class="grid grid--uniform grid--view-items">
+    <!-- Wishlist items will be dynamically inserted here -->
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    loadWishlistItems();
+  });
+</script>
