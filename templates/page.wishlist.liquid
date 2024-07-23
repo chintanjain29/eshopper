@@ -30,16 +30,16 @@
 </style>
 
 
-<div class="custom-container bg-secondary mb-5">
+{% comment %} <div class="custom-container bg-secondary mb-5">
     <div class="custom-content">
       <h1 class="custom-heading">{{ page.title }}</h1>
       <div class="custom-breadcrumb">
         <p>{% render 'breadcrumb' %}</p>
       </div>
     </div>
-  </div>
+  </div> {% endcomment %}
+
   <div id="wishlistContainer"> 
-  <h2>Your Wishlist</h2>
   <div id="display-item"></div>
   <button id= "removeButton" >Remove All</button>
 </div>
