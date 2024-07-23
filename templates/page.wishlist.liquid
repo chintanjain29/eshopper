@@ -47,7 +47,10 @@
     {%  for product in collections.all.products %}
      var wishid =   localStorage.getItem("wishId-{{ product.id }}");
      console.log(wishid);
-      if(wishid == '{{ product.id }}')
+      if(wishid == '{{ product.id }}'){
+      var wishGridId = `<h2>{{ product.title }}</h2>`
+    
+    }
     {% endfor %}
 
 });
