@@ -505,8 +505,9 @@
   
     <div style="padding-right:40px; ">
       <div class="cart__coupons" style="border:1px solid #EDF1FF;margin:5px auto; padding:10px auto;">
-        <input type="text" placeholder="Coupon Code">
-        <a>Apply Coupon</a>
+        {% comment %} <input type="text" placeholder="Coupon Code">
+        <a>Apply Coupon</a> {% endcomment %}
+        {%  render 'discount' %}
       </div>
       <div style="border:1px solid #EDF1FF; padding:2px auto;">
         <h3 style="background:#EDF1FF; font-size:2rem;">Cart Summary</h3>
