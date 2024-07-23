@@ -44,6 +44,8 @@
 </div>
 <script>
  $(document).ready(function(){
-
+    {%  for product in collections.all.products %}
+     console.log('{{ product.title }}')
+    {% endfor %}
 });
 </script>
