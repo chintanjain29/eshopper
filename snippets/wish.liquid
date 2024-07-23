@@ -41,3 +41,13 @@
         stroke: red;
       }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const wishlistButton = document.querySelector('.wishlist-button');
+        
+        wishlistButton.addEventListener('click', () => {
+          wishlistButton.classList.toggle('active');
+        });
+      });
+</script>
