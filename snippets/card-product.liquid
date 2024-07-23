@@ -171,6 +171,7 @@
               {{ card_product.title | escape }}
             </a>
           </h3>
+          {{ product.id }}
           {% render 'wish', productId: product.id %}
           <div class="card-information">
             {%- if show_vendor -%}
