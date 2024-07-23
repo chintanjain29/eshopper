@@ -690,4 +690,28 @@
   .add-to-cart-button:hover .add-to-cart-text {
     color: #D19C97;
   }
+
+  .wishlist-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .wishlist-heart {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+  }
+  
+  .wishlist-heart path {
+    fill: transparent;
+    stroke: #000;
+    stroke-width: 2;
+    transition: fill 0.3s ease;
+  }
+  
+  .wishlist-button.in-wishlist .wishlist-heart path {
+    fill: red;
+  }
 </style>
