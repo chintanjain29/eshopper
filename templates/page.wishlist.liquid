@@ -38,16 +38,62 @@
       </div>
     </div>
   </div>
-  {% layout 'theme.liquid' %}
-
-<div class="page-width">
-  <div id="wishlist-container" class="grid grid--uniform grid--view-items">
-    <!-- Wishlist items will be dynamically inserted here -->
-  </div>
+  <div id="wishlistContainer"> 
+  <h2>Your Wishlist</h2>
+  <div id="display-item"></div>
+  <button id= "removeButton" >Remove All</button>
 </div>
 
-<script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-    loadWishlistItems();
-  });
+<style>
+  .wishlist_product {  
+      display: flex;
+      flex-direction:column;
+      margin: 0 auto;
+      padding: 20px;
+  }
+  .product {
+      width: 200px;
+      margin-bottom: 20px;
+      margin-right:20px;
+      box-sizing: border-box;
+  }
+  .product img {
+      width: 100%;
+      height: auto;
+  }
+  a{
+    color:black;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {  
+  const wish = JSON.parse(localStorage.getItem('wishlist')) || [];
+  const wishlistHtml = wish.map(item =>
+      `<div class="wishlist_product">
+          <div class="product">
+              <img src="/${item.d.image}"/>
+              <h3><a href = "${item.d.url}">${item.d.title}</a></h3>
+              <h4>${item.d.price}</h4>  
+      </div>
+      <br>`
+  ).join('');
+  document.getElementById('display-item').innerHTML = wishlistHtml;
+  
+      const removeButton = document.getElementById('removeButton');
+      
+      removeButton.addEventListener('click', () => {
+          const itemsToRemove = document.querySelectorAll('.wishlist_product');
+      
+          itemsToRemove.forEach(item => {
+              item.remove();
+          });
+        localStorage.clear();
+        alert("Empty wishlist")
+      });
+  // console.log(info);
+});
 </script>
+
+
+
