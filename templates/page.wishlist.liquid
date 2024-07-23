@@ -47,6 +47,7 @@
     {%  for product in collections.all.products %}
      var wishid =   localStorage.getItem("wishId-{{ product.id }}");
      console.log(wishid);
+      if(wishid == '{{ product.id }}')
     {% endfor %}
 
 });
