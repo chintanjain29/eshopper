@@ -30,6 +30,8 @@
 
   {{ 'quickview.css' | asset_url | stylesheet_tag }}
   <script src="{{'quickview.js'| asset_url }}" defer="defer"></script>
+  <script src="{{'wish.js'| asset_url }}" defer="defer"></script>
+
 {%- endunless -%}
 
 {%- if card_product and card_product != empty -%}
