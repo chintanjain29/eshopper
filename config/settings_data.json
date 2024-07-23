@@ -277,11 +277,18 @@
             "settings": {
               "header_link": "shopify:\/\/pages\/contact-1"
             }
+          },
+          "header_link_ay6daU": {
+            "type": "header_link",
+            "settings": {
+              "header_link": "shopify:\/\/pages\/faq"
+            }
           }
         },
         "block_order": [
           "header_link_nRjbDq",
-          "header_link_exRLTK"
+          "header_link_exRLTK",
+          "header_link_ay6daU"
         ],
         "settings": {
           "facebook_url": "https:\/\/www.facebook.com",
