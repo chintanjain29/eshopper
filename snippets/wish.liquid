@@ -70,35 +70,11 @@
   </script>
   
   
-  <script>
-    $(document).ready(function(){
-        // Function to get the current wishlist array
-        function getWishlist() {
-            let wishlist = localStorage.getItem('wishlist');
-            return wishlist ? JSON.parse(wishlist) : [];
-        }
-    
-        // Function to save the wishlist array
-        function saveWishlist(wishlist) {
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        }
-    
-        $('.wishlist-button').click(function(){
-            let productId = '{{ productId }}';
-            let wishlist = getWishlist();
-    
-            if (!wishlist.includes(productId)) {
-                wishlist.push(productId);
-                saveWishlist(wishlist);
-                {% comment %} console.log('Product added to wishlist array');
-            } else {
-                console.log('Product is already in the wishlist array');
-            } {% endcomment %}
-        });
-    
-        // Initialize wishlist if it doesn't exist
-        if (!localStorage.getItem('wishlist')) {
-            saveWishlist([]);
-        }
+<script>
+   $(document).ready(function(){
+    $('#wishlist-{{ productId }}').click(function(){
+    let wishlistId ='{{ productId }}';
+    localStorage.setItem("wishId-{{ productId }}" , wishlistId )
     });
-    </script>
+});
+</script>
