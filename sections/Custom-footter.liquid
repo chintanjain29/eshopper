@@ -45,17 +45,15 @@
 
     <div class="newsletter">
       {% for block in section.blocks %}
-        {% form 'customer' %}
-          <div class="email">
-            <label for="email">Email</label>
-            <input type="email" name="contact[email]" />
+        {% if block.type == 'newsletter' %}
+          <div>
+            <h3>{{ block.settings.title }}</h3>
+            <form action="#" method="post">
+              <input type="email" name="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
           </div>
-        
-          <div class="submit">
-            <input type="submit" value="Sign up" />
-          </div>
-        {% endform %}
-        
+        {% endif %}
       {% endfor %}
     </div>
   </div>
