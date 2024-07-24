@@ -56,9 +56,9 @@
 <script>
  $(document).ready(function(){
     {%  for product in collections.all.products %}
-     var wishid =   localStorage.getItem("wishId-{{ product.id }}");
+     var wishid =   localStorage.getItem("wishId-{{ product.handle }}");
      console.log(wishid);
-      if(wishid == '{{ product.id }}'){
+      if(wishid == '{{ product.handle }}'){
       var wishGridId = `
                 <div class="wishlist-grid">
                <a href = ""><img src ="{{ product.featured_image  | image_url : width:250 , height:350 }}"> </a>
