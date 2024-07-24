@@ -259,7 +259,6 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'wish.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       {% comment %}theme-check-disable AssetPreload{% endcomment %}
@@ -375,7 +374,7 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <script src="{{ 'wish.js' | asset_url }}" defer="defer"></script>
+    
   </body>
 </html>
 <style>
@@ -448,16 +447,6 @@
        transform: translateY(-5px);
      }
    }
-
-   #wishlist-{{ productId }} {
-    /* Default color */
-    color: #000;
-  }
-  
-  #wishlist-{{ productId }}.active {
-    /* Color when active */
-    color: #D19C97;
-  }
 </style>
 
 <script>
