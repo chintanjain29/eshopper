@@ -1,8 +1,9 @@
-  <button id="wishlist-{{ product.id }}" class="wishlist-button" data-product-id="{{ product.id }}">
+<button id="wishlist-{{ productId }}" class="wishlist-button" aria-label="Add to wishlist">
     <svg class="wishlist-heart" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
     </svg>
-</button>
+  </button>
+
   <style>
     .wishlist-button {
         width: 40px;
@@ -69,59 +70,11 @@
   </script>
   
   
-  <script>
-    $(document).ready(function(){
-        // Function to get the current wishlist array
-        function getWishlist() {
-            let wishlist = localStorage.getItem('wishlist');
-            return wishlist ? JSON.parse(wishlist) : [];
-        }
-    
-        // Function to save the wishlist array
-        function saveWishlist(wishlist) {
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        }
-    
-        // Function to toggle a product in the wishlist
-        function toggleWishlistItem(productId) {
-            let wishlist = getWishlist();
-            let index = wishlist.indexOf(productId);
-            
-            if (index === -1) {
-                // Product not in wishlist, add it
-                wishlist.push(productId);
-                alert('Product added to wishlist');
-            } else {
-                // Product in wishlist, remove it
-                wishlist.splice(index, 1);
-                alert('Product removed from wishlist');
-            }
-            
-            saveWishlist(wishlist);
-            updateButtonState(productId);
-        }
-    
-        // Function to update button state
-        function updateButtonState(productId) {
-            let wishlist = getWishlist();
-            let button = $('#wishlist-' + productId);
-            if (wishlist.includes(productId)) {
-                button.addClass('active');
-            } else {
-                button.removeClass('active');
-            }
-        }
-    
-        // Click event handler for wishlist buttons
-        $('.wishlist-button').click(function(){
-            let productId = $(this).data('product-id');
-            toggleWishlistItem(productId);
-        });
-    
-        // Initialize button states on page load
-        $('.wishlist-button').each(function() {
-            let productId = $(this).data('product-id');
-            updateButtonState(productId);
-        });
+<script>
+   $(document).ready(function(){
+    $('#wishlist-{{ productId }}').click(function(){
+    let wishlistId ='{{ productId }}';
+    localStorage.setItem("wishId-{{ productId }}" , wishlistId )
     });
-    </script>
+});
+</script>
