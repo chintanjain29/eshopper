@@ -58,9 +58,9 @@
     wishlistButton.addEventListener('click', () => {
       if (wishlistButton.classList.toggle('active')) {
         localStorage.setItem(`wishId-${productId}`, productId);
-        alert('Product added to wishlist');
+        {% comment %} alert('Product added to wishlist');
       } else {
-        localStorage.removeItem(`wishId-${productId}`);
+        localStorage.removeItem(`wishId-${productId}`); {% endcomment %}
         {% comment %} alert('Product removed from wishlist'); {% endcomment %}
       }
       // Reload the page
