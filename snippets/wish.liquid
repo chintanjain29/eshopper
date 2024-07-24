@@ -54,15 +54,12 @@
       wishlistButton.classList.add('active');
     }
   
-    // Toggle wishlist state and update appearance
+    // Toggle wishlist state and alert the user
     wishlistButton.addEventListener('click', () => {
       if (wishlistButton.classList.toggle('active')) {
-        // Add to wishlist
         localStorage.setItem(`wishId-${productId}`, productId);
-      } else {
-        // Remove from wishlist
-        localStorage.removeItem(`wishId-${productId}`);
       }
+      location.reload();
     });
   });
   </script>
