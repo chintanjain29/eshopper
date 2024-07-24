@@ -61,7 +61,7 @@
         alert('Product added to wishlist');
       } else {
         localStorage.removeItem(`wishId-${productId}`);
-        alert('Product removed from wishlist');
+        {% comment %} alert('Product removed from wishlist'); {% endcomment %}
       }
       // Reload the page
       location.reload();
