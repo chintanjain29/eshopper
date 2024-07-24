@@ -79,6 +79,7 @@
         localStorage.removeItem(`wishId-${productId}`);
         console.log("hi")
       } else {
+        console.log("setitem");
         localStorage.setItem(`wishId-${productId}`, productId);
       }
       updateButtonAppearance();
