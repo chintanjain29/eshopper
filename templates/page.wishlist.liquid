@@ -63,18 +63,7 @@
                 <div class="wishlist-grid">
                <a href = "{{ product.url }}"><img src ="{{ product.featured_image  | image_url : width:250 , height:350 }}"> </a>
                <a href="{{ product.url }}"><h4>{{ product.title }}</h4></a>
-               <a href="{{ product.url }}"><h4>{{ product.price | money }}</h4></a> 
-               <div class="custom-quickview-container" style="display:flex;">
-              <div class="custom-quickview view-button" data-handle="{{ product.id }}">
-                {% render 'view' %}
-                <span class="view-text">View</span>
-              </div>
-
-              <div class="custom-quickview add-to-cart-button" data-handle="{{ product.id}}">
-                {% render 'buy' %}
-                <span class="view-text">Buy Now</span>
-              </div>
-            </div>
+               <a href="{{ product.url }}"><h4>{{ product.price | money }}</h4></a>    
                 </div>
                 `;
     
