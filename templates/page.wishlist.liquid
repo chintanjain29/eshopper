@@ -65,12 +65,12 @@
                <a href="{{ product.url }}"><h4>{{ product.title }}</h4></a>
                <a href="{{ product.url }}"><h4>{{ product.price | money }}</h4></a> 
                <div class="custom-quickview-container">
-              <div class="custom-quickview view-button" data-handle="{{ card_product.handle }}">
+              <div class="custom-quickview view-button" data-handle="{{ product.id }}">
                 {% render 'view' %}
                 <span class="view-text">View</span>
               </div>
 
-              <div class="custom-quickview add-to-cart-button" data-handle="{{ card_product.handle }}">
+              <div class="custom-quickview add-to-cart-button" data-handle="{{ product.id}}">
                 {% render 'buy' %}
                 <span class="view-text">Buy Now</span>
               </div>
