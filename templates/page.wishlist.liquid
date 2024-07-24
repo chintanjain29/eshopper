@@ -59,6 +59,30 @@
       margin: 10px 0; 
       font-size: 1.5rem;
   }
+  wishlist-grid {
+    position: relative; /* Added for positioning the remove icon */
+  }
+  .remove-from-wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #D19C97;
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  .remove-from-wishlist:hover {
+    color: white;
+    background-color: #D19C97;
+  }
   
   @media (max-width: 991px) {
       .wishlist-grid {
@@ -78,37 +102,52 @@
 </style>
 
 
+
 <div class="page-width">
-  <div class="custom-container bg-secondary mb-5">
-      <div class="custom-content">
-          <h1 class="custom-heading">{{ page.title }}</h1>
-          <div class="custom-breadcrumb">
-              <p>{% render 'breadcrumb' %}</p>
-          </div>
+<div class="custom-container bg-secondary mb-5">
+  <div class="custom-content">
+      <h1 class="custom-heading">{{ page.title }}</h1>
+      <div class="custom-breadcrumb">
+          <p>{% render 'breadcrumb' %}</p>
       </div>
   </div>
-  <div class="wishlist-row">
-      <!-- Wishlist items will be appended here -->
-  </div>
+</div>
+<div class="wishlist-row">
+  <!-- Wishlist items will be appended here -->
+</div>
 </div>
 
 <script>
-  $(document).ready(function(){
-      var wishlistRow = $('.wishlist-row');
-      {% for product in collections.all.products %}
-          var wishid = localStorage.getItem("wishId-{{ product.id }}");
-          if(wishid == '{{ product.id }}'){
-              var wishGridItem = `
-                  <div class="wishlist-grid">
-                      <a href="{{ product.url }}">
-                          <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
-                          <h4>{{ product.title }}</h4>
-                          <h4>{{ product.price | money }}</h4>
-                      </a>
-                  </div>
-              `;
-              wishlistRow.append(wishGridItem);
-          }
-      {% endfor %}
+$(document).ready(function(){
+  var wishlistRow = $('.wishlist-row');
+  
+  function removeFromWishlist(productId) {
+      localStorage.removeItem("wishId-" + productId);
+      $(".wishlist-grid[data-product-id='" + productId + "']").remove();
+  }
+  
+  {% for product in collections.all.products %}
+      var wishid = localStorage.getItem("wishId-{{ product.id }}");
+      if(wishid == '{{ product.id }}'){
+          var wishGridItem = `
+              <div class="wishlist-grid" data-product-id="{{ product.id }}">
+                  <a href="{{ product.url }}">
+                      <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
+                      <h4>{{ product.title }}</h4>
+                      <h4>{{ product.price | money }}</h4>
+                  </a>
+                  <div class="remove-from-wishlist" onclick="removeFromWishlist('{{ product.id }}')">×</div>
+              </div>
+          `;
+          wishlistRow.append(wishGridItem);
+      }
+  {% endfor %}
+});
+
+function removeFromWishlist(productId) {
+  localStorage.removeItem("wishId-" + productId);
+  $(".wishlist-grid[data-product-id='" + productId + "']").fadeOut(300, function() {
+      $(this).remove();
   });
+}
 </script>
