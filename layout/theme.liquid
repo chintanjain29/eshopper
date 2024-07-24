@@ -374,6 +374,45 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        var header = document.querySelector('header'); // Adjust this selector if needed
+    
+        function toggleScrollButton() {
+          var headerBottom = header.offsetTop + header.offsetHeight;
+          if (window.pageYOffset > headerBottom) {
+            scrollToTopBtn.classList.add('show');
+          } else {
+            scrollToTopBtn.classList.remove('show');
+          }
+        }
+    
+        window.addEventListener('scroll', toggleScrollButton);
+        window.addEventListener('resize', toggleScrollButton);
+    
+        scrollToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+    
+        // Initial check
+        toggleScrollButton();
+      });
+    </script>
+    <script>
+        $('.card-wrapper').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        autoplaySpeed:3000
+      });
+    </script>
+    
   </body>
 </html>
 <style>
