@@ -47,18 +47,23 @@
   document.addEventListener('DOMContentLoaded', () => {
     const productId = '{{ productId }}';
     const wishlistButton = document.getElementById(wishlist-${productId});
-    
+
     // Check if the product is already in the wishlist
     const wishlistId = localStorage.getItem(wishId-${productId});
     if (wishlistId) {
       wishlistButton.classList.add('active');
     }
-  
+
     // Toggle wishlist state and alert the user
     wishlistButton.addEventListener('click', () => {
       if (wishlistButton.classList.toggle('active')) {
         localStorage.setItem(wishId-${productId}, productId);
+        {% comment %} alert('Product added to wishlist');
+      } else {
+        localStorage.removeItem(wishId-${productId}); {% endcomment %}
+        {% comment %} alert('Product removed from wishlist'); {% endcomment %}
       }
+      // Reload the page
       location.reload();
     });
   });
