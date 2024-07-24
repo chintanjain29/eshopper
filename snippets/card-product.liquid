@@ -222,7 +222,8 @@
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             <div class="custom-quickview-container">
               <div class="custom-quickview view-button" data-handle="{{ card_product.handle }}">
-                {% render 'views' %}
+                {% render 'view' %}
+                <span class="view-text">View</span>
               </div>
 
               <div class="custom-quickview add-to-cart-button" data-handle="{{ card_product.handle }}">
