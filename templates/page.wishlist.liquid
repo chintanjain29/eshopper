@@ -27,52 +27,75 @@
         color: #D19C97; /* Change color on hover */
         border-bottom: 1px solid #D19C97; /* Underline on hover */
     }
-    .wishlist-row{
-    display:flex;
-    flex:wrap;
-    }
-    .wishlist-grid{
-    border:1px solid grey;
-    display:inline-block;
-    width:25%;
-    margin:10px;
-    padding:10px;
-    }
-    .wishlist-grid a{
-    text-decoration:none;
-    }
+    .wishlist-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -10px; /* Negative margin to counteract padding on grid items */
+  }
+  .wishlist-grid {
+      border: 1px solid grey;
+      width: calc(25% - 20px); /* 25% width for 4 items per row, minus margins */
+      margin: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+  }
+  .wishlist-grid a {
+      text-decoration: none;
+  }
+  .wishlist-grid img {
+      max-width: 100%;
+      height: auto;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+      .wishlist-grid {
+          width: calc(33.333% - 20px); /* 3 items per row on medium screens */
+      }
+  }
+  @media (max-width: 767px) {
+      .wishlist-grid {
+          width: calc(50% - 20px); /* 2 items per row on small screens */
+      }
+  }
+  @media (max-width: 479px) {
+      .wishlist-grid {
+          width: calc(100% - 20px); /* 1 item per row on very small screens */
+      }
+  }
 </style>
 
 <div class="page-width">
-<div class="custom-container bg-secondary mb-5">
-    <div class="custom-content">
-      <h1 class="custom-heading">{{ page.title }}</h1>
-      <div class="custom-breadcrumb">
-        <p>{% render 'breadcrumb' %}</p>
+  <div class="custom-container bg-secondary mb-5">
+      <div class="custom-content">
+          <h1 class="custom-heading">{{ page.title }}</h1>
+          <div class="custom-breadcrumb">
+              <p>{% render 'breadcrumb' %}</p>
+          </div>
       </div>
-    </div>
   </div>
-  <div class ="wishlist-row">
+  <div class="wishlist-row">
+      <!-- Wishlist items will be appended here -->
+  </div>
+</div>
 
-</div>
-</div>
 <script>
- $(document).ready(function(){
-    {%  for product in collections.all.products %}
-     var wishid =   localStorage.getItem("wishId-{{ product.id }}");
-     console.log(wishid);
-      if(wishid == '{{ product.id }}'){
-      var wishGridId = `
-                <div class="wishlist-grid">
-               <a href = "{{ product.url }}"><img src ="{{ product.featured_image  | image_url : width:250 , height:350 }}"> </a>
-               <a href="{{ product.url }}"><h4>{{ product.title }}</h4></a>
-               <a href="{{ product.url }}"><h4>{{ product.price | money }}</h4></a>    
-                </div>
-                `;
-    
-      $('.wishlist-row').append(wishGridId);
-    }
-    {% endfor %}
-
-});
+  $(document).ready(function(){
+      var wishlistRow = $('.wishlist-row');
+      {% for product in collections.all.products %}
+          var wishid = localStorage.getItem("wishId-{{ product.id }}");
+          if(wishid == '{{ product.id }}'){
+              var wishGridItem = `
+                  <div class="wishlist-grid">
+                      <a href="{{ product.url }}">
+                          <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
+                          <h4>{{ product.title }}</h4>
+                          <h4>{{ product.price | money }}</h4>
+                      </a>
+                  </div>
+              `;
+              wishlistRow.append(wishGridItem);
+          }
+      {% endfor %}
+  });
 </script>
