@@ -37,12 +37,4 @@
         stroke: #D19C97;
       }
 
-      #wishlist-{{ productId }} {
-        /* Default color */
-        color: #000;
-      }
       
-      #wishlist-{{ productId }}.active {
-        /* Color when active */
-        color: #D19C97;
-      }
