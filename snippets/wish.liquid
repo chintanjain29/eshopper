@@ -63,9 +63,12 @@
         localStorage.removeItem(`wishId-${productId}`);
         alert('Product removed from wishlist');
       }
+      // Reload the page
+      location.reload();
     });
   });
   </script>
+  
   
 <script>
    $(document).ready(function(){
