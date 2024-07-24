@@ -82,8 +82,7 @@
         console.log("setitem");
         console.log(productId);
         console.log(`wishId-${productId}`);
-        localStorage.setItem(`wishId-${productId}`, productId);
-      }
+        localStorage.setItem(`wishId-`+productId+, productId);      }
       localStorage.setItem("key", "value");
 
       updateButtonAppearance();
