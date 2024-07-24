@@ -75,6 +75,7 @@
     wishlistButton.addEventListener('click', () => {
       if (localStorage.getItem(`wishId-${productId}`)) {
         localStorage.removeItem(`wishId-${productId}`);
+        console.log("hi")
       } else {
         localStorage.setItem(`wishId-${productId}`, productId);
       }
