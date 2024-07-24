@@ -834,7 +834,7 @@
     const navList = document.querySelector('.custom-nav-list');
 
     if (navToggle && navList) {
-        // Set dropdown to be open by default
+        // Set main dropdown to be open by default
         navList.classList.add('show');
         navToggle.querySelector('i').classList.add('fa-angle-up'); // Set icon class for collapse effect
 
@@ -858,8 +858,6 @@
         const subMenu = item.querySelector('.custom-dropdown-menu');
         if (subMenu) {
             const link = item.querySelector('.custom-nav-link');
-            item.classList.add('active'); // Set submenu to be open by default
-
             link.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
                 item.classList.toggle('active');
