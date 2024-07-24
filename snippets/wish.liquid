@@ -57,7 +57,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const productId = '{{ productId }}';
     const wishlistButton = document.getElementById(`wishlist-${productId}`);
-    console.log("wishlistbutton");
+    console.log(wishlistbutton);
     
     // Function to update button appearance
     function updateButtonAppearance() {
@@ -65,7 +65,9 @@
         wishlistButton.classList.add('active');
       } else {
         wishlistButton.classList.remove('active');
+      console.log("clicked");
       }
+
     }
   
     // Initial check
