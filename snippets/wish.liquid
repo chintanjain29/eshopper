@@ -54,16 +54,20 @@
       wishlistButton.classList.add('active');
     }
   
-    // Toggle wishlist state and alert the user
+    // Toggle wishlist state and update appearance
     wishlistButton.addEventListener('click', () => {
-      if (wishlistButton.classList.toggle('active')) {
+      if (wishlistButton.classList.contains('active')) {
+        // Remove from wishlist
+        localStorage.removeItem(`wishId-${productId}`);
+        wishlistButton.classList.remove('active');
+      } else {
+        // Add to wishlist
         localStorage.setItem(`wishId-${productId}`, productId);
+        wishlistButton.classList.add('active');
       }
-      location.reload();
     });
   });
   </script>
-
 
 {% comment %} <script>
    $(document).ready(function(){
