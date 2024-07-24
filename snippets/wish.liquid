@@ -57,6 +57,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const productId = '{{ productId }}';
     const wishlistButton = document.getElementById(`wishlist-${productId}`);
+    console.log("Hello");
     
     // Function to update button appearance
     function updateButtonAppearance() {
@@ -72,6 +73,7 @@
   
     // Toggle wishlist state and update appearance
     wishlistButton.addEventListener('click', () => {
+      console.log("Hello");
       if (localStorage.getItem(`wishId-${productId}`)) {
         localStorage.removeItem(`wishId-${productId}`);
       } else {
