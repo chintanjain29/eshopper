@@ -48,21 +48,39 @@
     const productId = '{{ productId }}';
     const wishlistButton = document.getElementById(`wishlist-${productId}`);
     
+    // Function to get the current wishlist array
+    function getWishlist() {
+      return JSON.parse(localStorage.getItem('wishlist')) || [];
+    }
+  
+    // Function to save the wishlist array
+    function saveWishlist(wishlist) {
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+  
     // Check if the product is already in the wishlist
-    const wishlistId = localStorage.getItem(`wishId-${productId}`);
-    if (wishlistId) {
+    const wishlist = getWishlist();
+    if (wishlist.includes(productId)) {
       wishlistButton.classList.add('active');
     }
   
-    // Toggle wishlist state and alert the user
+    // Toggle wishlist state
     wishlistButton.addEventListener('click', () => {
+      const updatedWishlist = getWishlist();
+      const index = updatedWishlist.indexOf(productId);
+  
       if (wishlistButton.classList.toggle('active')) {
-        localStorage.setItem(`wishId-${productId}`, productId);
-        {% comment %} alert('Product added to wishlist');
+        if (index === -1) {
+          updatedWishlist.push(productId);
+        }
       } else {
-        localStorage.removeItem(`wishId-${productId}`); {% endcomment %}
-        {% comment %} alert('Product removed from wishlist'); {% endcomment %}
+        if (index > -1) {
+          updatedWishlist.splice(index, 1);
+        }
       }
+  
+      saveWishlist(updatedWishlist);
+  
       // Reload the page
       location.reload();
     });
