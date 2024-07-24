@@ -90,9 +90,9 @@
             if (!wishlist.includes(productId)) {
                 wishlist.push(productId);
                 saveWishlist(wishlist);
-                alert('Product added to wishlist');
+                {% comment %} alert('Product added to wishlist'); {% endcomment %}
             } else {
-                alert('Product is already in the wishlist');
+                {% comment %} alert('Product is already in the wishlist'); {% endcomment %}
             }
     
             // Keep the existing functionality
