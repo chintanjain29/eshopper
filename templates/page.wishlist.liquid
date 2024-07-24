@@ -93,22 +93,23 @@
   </div>
 </div>
 
-$(document).ready(function(){
-  var wishlistRow = $('.wishlist-row');
-  var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  
-  {% for product in collections.all.products %}
-      if(wishlist.includes('{{ product.id }}')) {
-          var wishGridItem = `
-              <div class="wishlist-grid">
-                  <a href="{{ product.url }}">
-                      <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
-                      <h4>{{ product.title }}</h4>
-                      <h4>{{ product.price | money }}</h4>
-                  </a>
-              </div>
-          `;
-          wishlistRow.append(wishGridItem);
-      }
-  {% endfor %}
-});
+<script>
+  $(document).ready(function(){
+      var wishlistRow = $('.wishlist-row');
+      {% for product in collections.all.products %}
+          var wishid = localStorage.getItem("wishId-{{ product.id }}");
+          if(wishid == '{{ product.id }}'){
+              var wishGridItem = `
+                  <div class="wishlist-grid">
+                      <a href="{{ product.url }}">
+                          <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
+                          <h4>{{ product.title }}</h4>
+                          <h4>{{ product.price | money }}</h4>
+                      </a>
+                  </div>
+              `;
+              wishlistRow.append(wishGridItem);
+          }
+      {% endfor %}
+  });
+</script>
