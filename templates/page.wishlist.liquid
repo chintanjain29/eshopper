@@ -124,50 +124,84 @@
 
 
 <div class="page-width">
-<div class="custom-container bg-secondary mb-5">
-  <div class="custom-content">
-      <h1 class="custom-heading">{{ page.title }}</h1>
-      <div class="custom-breadcrumb">
-          <p>{% render 'breadcrumb' %}</p>
+  <div class="custom-container bg-secondary mb-5">
+      <div class="custom-content">
+          <h1 class="custom-heading">{{ page.title }}</h1>
+          <div class="custom-breadcrumb">
+              <p>{% render 'breadcrumb' %}</p>
+          </div>
       </div>
   </div>
-</div>
-<div class="wishlist-row">
-  <!-- Wishlist items will be appended here -->
-</div>
+  <div class="wishlist-row">
+      <!-- Wishlist items will be appended here -->
+  </div>
+  <div class="empty-wishlist" style="display: none;">
+      <h2>Your wishlist is empty</h2>
+      <a href="/collections/all" class="continue-shopping">Continue Shopping</a>
+  </div>
 </div>
 
 <script>
-$(document).ready(function(){
-  var wishlistRow = $('.wishlist-row');
-  
+  $(document).ready(function(){
+      var wishlistRow = $('.wishlist-row');
+      var emptyWishlist = $('.empty-wishlist');
+      var wishlistItemCount = 0;
+      
+      function removeFromWishlist(productId) {
+          localStorage.removeItem("wishId-" + productId);
+          $(".wishlist-grid[data-product-id='" + productId + "']").fadeOut(300, function() {
+              $(this).remove();
+              wishlistItemCount--;
+              checkWishlistEmpty();
+          });
+      }
+      
+      function checkWishlistEmpty() {
+          if (wishlistItemCount === 0) {
+              wishlistRow.hide();
+              emptyWishlist.show();
+          } else {
+              wishlistRow.show();
+              emptyWishlist.hide();
+          }
+      }
+      
+      {% for product in collections.all.products %}
+          var wishid = localStorage.getItem("wishId-{{ product.id }}");
+          if(wishid == '{{ product.id }}'){
+              wishlistItemCount++;
+              var wishGridItem = `
+                  <div class="wishlist-grid" data-product-id="{{ product.id }}">
+                      <a href="{{ product.url }}">
+                          <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
+                          <h4>{{ product.title }}</h4>
+                          <h4>{{ product.price | money }}</h4>
+                      </a>
+                      <div class="remove-from-wishlist" onclick="removeFromWishlist('{{ product.id }}')">×</div>
+                  </div>
+              `;
+              wishlistRow.append(wishGridItem);
+          }
+      {% endfor %}
+      
+      checkWishlistEmpty();
+  });
+
   function removeFromWishlist(productId) {
       localStorage.removeItem("wishId-" + productId);
-      $(".wishlist-grid[data-product-id='" + productId + "']").remove();
+      $(".wishlist-grid[data-product-id='" + productId + "']").fadeOut(300, function() {
+          $(this).remove();
+          checkWishlistEmpty();
+      });
   }
-  
-  {% for product in collections.all.products %}
-      var wishid = localStorage.getItem("wishId-{{ product.id }}");
-      if(wishid == '{{ product.id }}'){
-          var wishGridItem = `
-              <div class="wishlist-grid" data-product-id="{{ product.id }}">
-                  <a href="{{ product.url }}">
-                      <img src="{{ product.featured_image | image_url: width: 250, height: 250, crop: 'center' }}" alt="{{ product.title }}">
-                      <h4>{{ product.title }}</h4>
-                      <h4>{{ product.price | money }}</h4>
-                  </a>
-                  <div class="remove-from-wishlist" onclick="removeFromWishlist('{{ product.id }}')">×</div>
-              </div>
-          `;
-          wishlistRow.append(wishGridItem);
-      }
-  {% endfor %}
-});
 
-function removeFromWishlist(productId) {
-  localStorage.removeItem("wishId-" + productId);
-  $(".wishlist-grid[data-product-id='" + productId + "']").fadeOut(300, function() {
-      $(this).remove();
-  });
-}
+  function checkWishlistEmpty() {
+      if ($('.wishlist-grid').length === 0) {
+          $('.wishlist-row').hide();
+          $('.empty-wishlist').show();
+      } else {
+          $('.wishlist-row').show();
+          $('.empty-wishlist').hide();
+      }
+  }
 </script>
