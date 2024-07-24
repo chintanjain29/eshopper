@@ -69,7 +69,7 @@
   });
   </script>
   
-  
+{% comment %}   
 <script>
    $(document).ready(function(){
     $('#wishlist-{{ productId }}').click(function(){
@@ -77,4 +77,4 @@
     localStorage.setItem("wishId-{{ productId }}" , wishlistId )
     });
 });
-</script>
+</script> {% endcomment %}
