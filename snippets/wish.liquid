@@ -71,10 +71,18 @@
   
   
 <script>
-   $(document).ready(function(){
-    $('#wishlist-{{ productId }}').click(function(){
-    let wishlistId ='{{ productId }}';
-    localStorage.setItem("wishId-{{ productId }}" , wishlistId )
+$(document).ready(function(){
+    $('.wishlist-button').click(function(){
+        let productId = '{{ productId }}';
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        if (!wishlist.includes(productId)) {
+            wishlist.push(productId);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            {% comment %} console.log('Product added to wishlist array');
+        } else {
+            console.log('Product is already in the wishlist array'); {% endcomment %}
+        }
     });
 });
 </script>
