@@ -48,28 +48,20 @@
     const productId = '{{ productId }}';
     const wishlistButton = document.getElementById(`wishlist-${productId}`);
     
-    // Retrieve the wishlist from local storage
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    
     // Check if the product is already in the wishlist
-    if (wishlist.includes(productId)) {
+    const wishlistId = localStorage.getItem(`wishId-${productId}`);
+    if (wishlistId) {
       wishlistButton.classList.add('active');
     }
   
-    // Toggle wishlist state and update the array in local storage
+    // Toggle wishlist state and alert the user
     wishlistButton.addEventListener('click', () => {
       if (wishlistButton.classList.toggle('active')) {
-        if (!wishlist.includes(productId)) {
-          wishlist.push(productId);
-        }
-      } else {
-        wishlist = wishlist.filter(id => id !== productId);
+        localStorage.setItem(`wishId-${productId}`, productId);
       }
-      localStorage.setItem('wishlist', JSON.stringify(wishlist));
       location.reload();
     });
   });
-  
   </script>
   
 {% comment %}   
