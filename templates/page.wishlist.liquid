@@ -30,41 +30,56 @@
     .wishlist-row {
       display: flex;
       flex-wrap: wrap;
-      margin: -10px; /* Negative margin to counteract padding on grid items */
+      margin: -15px; /* Increased negative margin to counteract increased padding on grid items */
   }
   .wishlist-grid {
-      border: 1px solid grey;
-      width: calc(25% - 20px); /* 25% width for 4 items per row, minus margins */
-      margin: 10px;
-      padding: 10px;
+      border: 1px solid #e0e0e0; /* Lighter border color */
+      width: calc(25% - 30px); /* Adjusted for increased margins */
+      margin: 15px;
+      padding: 20px;
       box-sizing: border-box;
+      background-color: #ffffff; /* White background */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+      transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  }
+  .wishlist-grid:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Increased shadow on hover */
   }
   .wishlist-grid a {
       text-decoration: none;
+      color: inherit; /* Ensures text color matches your theme */
   }
   .wishlist-grid img {
       max-width: 100%;
       height: auto;
+      margin-bottom: 15px; /* Space between image and text */
+  }
+  .wishlist-grid h4 {
+      margin: 10px 0; /* Spacing between title and price */
+      font-size: 1rem; /* Adjust as needed */
+  }
+  .wishlist-grid h4:last-child { /* Price */
+      color: #D19C97; /* Assuming this matches your theme's accent color */
+      font-weight: bold;
   }
   
   /* Responsive adjustments */
   @media (max-width: 991px) {
       .wishlist-grid {
-          width: calc(33.333% - 20px); /* 3 items per row on medium screens */
+          width: calc(33.333% - 30px); /* 3 items per row on medium screens */
       }
   }
   @media (max-width: 767px) {
       .wishlist-grid {
-          width: calc(50% - 20px); /* 2 items per row on small screens */
+          width: calc(50% - 30px); /* 2 items per row on small screens */
       }
   }
   @media (max-width: 479px) {
       .wishlist-grid {
-          width: calc(100% - 20px); /* 1 item per row on very small screens */
+          width: calc(100% - 30px); /* 1 item per row on very small screens */
       }
   }
 </style>
-
 <div class="page-width">
   <div class="custom-container bg-secondary mb-5">
       <div class="custom-content">
