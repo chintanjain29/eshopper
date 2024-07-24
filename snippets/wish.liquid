@@ -1,81 +1,62 @@
-<button id="wishlist-{{ productId }}" class="wishlist-button" aria-label="Add to wishlist" data-product-id="{{ productId }}">
-  <svg class="wishlist-heart" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-  </svg>
-</button>
+<button id="wishlist-{{ productId }}" class="wishlist-button" aria-label="Add to wishlist">
+    <svg class="wishlist-heart" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+  </button>
 
-<style>
-  .wishlist-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    padding: 0;
-    position: relative;
-    z-index: 10;
-  }
-
-  .wishlist-button:hover {
-    transform: scale(1.05);
-  }
-
-  .wishlist-heart {
-    width: 20px;
-    height: 20px;
-  }
-
-  .wishlist-heart path {
-    fill: transparent;
-    stroke: #333;
-    stroke-width: 2;
-    transition: fill 0.3s ease, stroke 0.3s ease;
-  }
-
-  .wishlist-button.active .wishlist-heart path {
-    fill: red;
-    stroke: red;
-  }
+  <style>
+    .wishlist-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        padding: 0;
+        position: relative;  
+        z-index: 10; 
+      }
+      
+      .wishlist-button:hover {
+        transform: scale(1.05);
+      }
+      
+      .wishlist-heart {
+        width: 20px;
+        height: 20px;
+      }
+      
+      .wishlist-heart path {
+        fill: transparent;
+        stroke: #333;
+        stroke-width: 2;
+        transition: fill 0.3s ease;
+      }
+      
+      .wishlist-button.active .wishlist-heart path {
+        fill: red;
+        stroke: red;
+      }
 </style>
-
 <script>
-  $(document).ready(function(){
-    function updateWishlistButton(button, isActive) {
-      if (isActive) {
-        button.addClass('active');
-      } else {
-        button.removeClass('active');
-      }
-    }
-
-    function isInWishlist(productId) {
-      return localStorage.getItem("wishId-" + productId) !== null;
-    }
-
-    $('.wishlist-button').each(function() {
-      var productId = $(this).data('product-id');
-      updateWishlistButton($(this), isInWishlist(productId));
-    });
-
-    $('.wishlist-button').click(function(){
-      var productId = $(this).data('product-id');
-      var wishlistKey = "wishId-" + productId;
-
-      if (isInWishlist(productId)) {
-        localStorage.removeItem(wishlistKey);
-        updateWishlistButton($(this), false);
-        alert("Product removed from wishlist");
-      } else {
-        localStorage.setItem(wishlistKey, productId);
-        updateWishlistButton($(this), true);
-        alert("Product added to wishlist");
-      }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  const wishlistButton = document.querySelector('.wishlist-button');
+  
+  wishlistButton.addEventListener('click', () => {
+    wishlistButton.classList.toggle('active');
   });
+});
+</script>
+<script>
+   $(document).ready(function(){
+    $('#wishlist-{{ productId }}').click(function(){
+    let wishlistId ='{{ productId }}';
+    localStorage.setItem("wishId-{{ productId }}" , wishlistId )
+    });
+});
 </script>
