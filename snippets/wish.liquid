@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
   wishlistButton.addEventListener('click', () => {
     if (wishlistButton.classList.toggle('active')) {
       localStorage.setItem(`wishId-${productId}`, productId);
-      alert('Product added to wishlist');
+      
     } else {
       localStorage.removeItem(`wishId-${productId}`);
-      alert('Product removed from wishlist');
+     
     }
   });
 });
