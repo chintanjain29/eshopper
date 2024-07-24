@@ -829,11 +829,15 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.custom-nav-toggle');
     const navList = document.querySelector('.custom-nav-list');
 
     if (navToggle && navList) {
+        // Set dropdown to be open by default
+        navList.classList.add('show');
+        navToggle.querySelector('i').classList.add('fa-angle-up'); // Set icon class for collapse effect
+
         navToggle.addEventListener('click', function() {
             navList.classList.toggle('show');
             navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
@@ -854,6 +858,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const subMenu = item.querySelector('.custom-dropdown-menu');
         if (subMenu) {
             const link = item.querySelector('.custom-nav-link');
+            item.classList.add('active'); // Set submenu to be open by default
+
             link.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
                 item.classList.toggle('active');
@@ -866,4 +872,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 </script>
