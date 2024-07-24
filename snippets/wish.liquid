@@ -42,6 +42,18 @@
         fill: #D19C97;
         stroke: #D19C97;
       }
+
+      #wishlist-{{ productId }} {
+        /* Default styles */
+        color: #000;
+        background-color: #fff;
+      }
+      
+      #wishlist-{{ productId }}.active {
+        /* Active styles */
+        color: #fff;
+        background-color: #D19C97;
+      }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
