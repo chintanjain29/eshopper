@@ -736,7 +736,7 @@
     font-size: 1.25rem; 
     flex-grow: 1;
 }
-{% comment %} 
+
 .custom-nav-toggle i {
     color: #000; 
     padding-left:35px;
@@ -802,34 +802,8 @@
     display: block;
     transition: color 0.3s;
     font-size: 1.2rem; /* Increased font size */
-} {% endcomment %}
-.custom-nav-list {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
 }
 
-.custom-nav-list.show {
-  max-height: 1000px; /* Adjust this value based on your content */
-}
-
-.custom-dropdown-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-
-.custom-nav-item.active .custom-dropdown-menu {
-  max-height: 500px; /* Adjust this value based on your content */
-}
-
-.custom-nav-toggle i {
-  transition: transform 0.3s ease;
-}
-
-.custom-nav-toggle i.fa-angle-up {
-  transform: rotate(180deg);
-}
 .custom-dropdown-item:hover {
     color: #D19C97;
     background-color: #EDF1FF;
@@ -859,79 +833,42 @@
   document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.custom-nav-toggle');
     const navList = document.querySelector('.custom-nav-list');
-    
+
     if (navToggle && navList) {
-        // Function to open the navigation
-        function openNav() {
-            navList.classList.add('show');
-            navToggle.querySelector('i').classList.add('fa-angle-up');
-        }
-        
-        // Function to close the navigation
-        function closeNav() {
-            navList.classList.remove('show');
-            navToggle.querySelector('i').classList.remove('fa-angle-up');
-        }
-        
-        // Open by default on home page
-        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-            openNav();
-        }
-        
-        // Toggle navigation on click
-        navToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            navList.classList.contains('show') ? closeNav() : openNav();
+        // Set the initial state to open
+        navList.classList.add('show');
+        navToggle.querySelector('i').classList.add('fa-angle-up');
+
+        navToggle.addEventListener('click', function() {
+            navList.classList.toggle('show');
+            navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
         });
-        
+
         // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
             if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
-                closeNav();
+                navList.classList.remove('show');
+                navToggle.querySelector('i').classList.remove('fa-angle-up'); // Ensure the icon class is reset
             }
         });
-        
-        // Prevent closing when clicking inside the nav list
-        navList.addEventListener('click', function(event) {
-            event.stopPropagation();
-        });
     }
-    
-    // Toggle sublinks with smooth animation
+
+    // Toggle sublinks
     const navItems = document.querySelectorAll('.custom-nav-item');
     navItems.forEach(item => {
         const subMenu = item.querySelector('.custom-dropdown-menu');
         if (subMenu) {
             const link = item.querySelector('.custom-nav-link');
             link.addEventListener('click', function(event) {
-                event.preventDefault();
-                event.stopPropagation();
-                
+                event.preventDefault(); // Prevent default link behavior
+                item.classList.toggle('active');
                 navItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                    if (otherItem !== item) {
                         otherItem.classList.remove('active');
-                        otherItem.querySelector('.custom-dropdown-menu').style.maxHeight = '0px';
                     }
                 });
-                
-                item.classList.toggle('active');
-                if (item.classList.contains('active')) {
-                    subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
-                } else {
-                    subMenu.style.maxHeight = '0px';
-                }
             });
         }
-    });
-    
-    // Add smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
     });
 });
 </script>
