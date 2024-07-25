@@ -186,7 +186,8 @@
           </a>
       {% endcomment %}
 {% if linklists.categories.links.size > 0 %}
-<nav class="custom-nav">
+  <div>
+  <nav class="custom-nav">
     <div class="custom-nav-toggle">
         <h4>{{ linklists.categories.title }}</h4>
         <i class="fa fa-angle-down"></i>
@@ -206,7 +207,7 @@
         {% endfor %}
     </div>
 </nav>
-
+</div>
 {% endif %}
 
 {% endif %}
