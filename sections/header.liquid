@@ -736,7 +736,7 @@
     font-size: 1.25rem; 
     flex-grow: 1;
 }
-
+{% comment %} 
 .custom-nav-toggle i {
     color: #000; 
     padding-left:35px;
@@ -802,8 +802,34 @@
     display: block;
     transition: color 0.3s;
     font-size: 1.2rem; /* Increased font size */
+} {% endcomment %}
+.custom-nav-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
 }
 
+.custom-nav-list.show {
+  max-height: 1000px; /* Adjust this value based on your content */
+}
+
+.custom-dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.custom-nav-item.active .custom-dropdown-menu {
+  max-height: 500px; /* Adjust this value based on your content */
+}
+
+.custom-nav-toggle i {
+  transition: transform 0.3s ease;
+}
+
+.custom-nav-toggle i.fa-angle-up {
+  transform: rotate(180deg);
+}
 .custom-dropdown-item:hover {
     color: #D19C97;
     background-color: #EDF1FF;
