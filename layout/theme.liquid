@@ -372,36 +372,64 @@
     </script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        document.body.addEventListener('click', (event) => {
-          if (event.target.closest('.wishlist-button')) {
-            const wishlistButton = event.target.closest('.wishlist-button');
-            const productId = wishlistButton.id.split('-')[1];
-            
-            if (localStorage.getItem(`wishId-${productId}`)) {
-              localStorage.removeItem(`wishId-${productId}`);
-            } else {
-              localStorage.setItem(`wishId-${productId}`, productId);
-            }
-            updateButtonAppearance(wishlistButton, productId);
-          }
-        });
-      
-        function updateButtonAppearance(button, productId) {
-          if (localStorage.getItem(`wishId-${productId}`)) {
-            button.classList.add('active');
-          } else {
-            button.classList.remove('active');
+      // Global function to get wishlist count
+      function getWishlistCount() {
+        let count = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+          let key = localStorage.key(i);
+          if (key.startsWith('wishId-')) {
+            count++;
           }
         }
+        return count;
+      }
       
-        // Initial check for all wishlist buttons
-        document.querySelectorAll('.wishlist-button').forEach(button => {
-          const productId = button.id.split('-')[1];
-          updateButtonAppearance(button, productId);
+      // Function to update wishlist count in the UI
+      function updateWishlistCountUI() {
+        let count = getWishlistCount();
+        // Update the count in the badge
+        const badge = document.getElementById('wishlist-count-badge');
+        if (badge) {
+          badge.textContent = count;
+        }
+        console.log(`Wishlist items: ${count}`);
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const productId = '{{ productId }}';
+        const wishlistButton = document.getElementById(`wishlist-${productId}`);
+        
+        function updateButtonAppearance() {
+          if (localStorage.getItem(`wishId-${productId}`)) {
+            wishlistButton.classList.add('active');
+          } else {
+            wishlistButton.classList.remove('active');
+          }
+          
+          // Update wishlist count UI
+          updateWishlistCountUI();
+        }
+      
+        // Initial check
+        updateButtonAppearance();
+      
+        // Toggle wishlist state and update appearance
+        wishlistButton.addEventListener('click', () => {
+          if (localStorage.getItem(`wishId-${productId}`)) {
+            localStorage.removeItem(`wishId-${productId}`);
+          } else {
+            localStorage.setItem(`wishId-${productId}`, productId);
+          }
+          updateButtonAppearance();
         });
+      
+        // Update wishlist count on page load
+        updateWishlistCountUI();
       });
-    </script>
+      
+      // Optional: Update count every minute (if you expect it might change while the page is open)
+      setInterval(updateWishlistCountUI, 60000);
+      </script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var scrollToTopBtn = document.getElementById('scrollToTopBtn');
