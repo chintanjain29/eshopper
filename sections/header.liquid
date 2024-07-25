@@ -831,61 +831,27 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Toggle vertical navbar
-    const verticalNavbarToggle = document.querySelector('.custom-nav-toggle');
-    const verticalNavbar = document.getElementById('navbar-vertical');
-    if (verticalNavbarToggle && verticalNavbar) {
-        // Ensure the vertical navbar is closed by default
-        verticalNavbar.classList.remove('show');
-        document.body.classList.remove('navbar-vertical-open');
+    const navToggle = document.querySelector('.custom-nav-toggle');
+    const navList = document.querySelector('.custom-nav-list');
 
-        verticalNavbarToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            verticalNavbar.classList.toggle('show');
-            document.body.classList.toggle('navbar-vertical-open');
+    if (navToggle && navList) {
+        // Set the initial state to open
+        navList.classList.add('show');
+        navToggle.querySelector('i').classList.add('fa-angle-up');
+
+        navToggle.addEventListener('click', function() {
+            navList.classList.toggle('show');
+            navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
+                navList.classList.remove('show');
+                navToggle.querySelector('i').classList.remove('fa-angle-up'); // Ensure the icon class is reset
+            }
         });
     }
-
-    // Toggle main navbar on mobile
-    const mainNavbarToggle = document.querySelector('.custom-nav-toggle');
-    const mainNavbarContent = document.getElementById('navbarCollapse');
-    if (mainNavbarToggle && mainNavbarContent) {
-        mainNavbarToggle.addEventListener('click', function() {
-            mainNavbarContent.classList.toggle('show');
-        });
-    }
-
-    // Handle all dropdowns (including the "Dresses" dropdown)
-    const dropdowns = document.querySelectorAll('.custom-dropdown');
-    dropdowns.forEach(function(dropdown) {
-        const dropdownToggle = dropdown.querySelector('.custom-nav-link');
-        const dropdownMenu = dropdown.querySelector('.custom-dropdown-menu');
-        if (dropdownToggle && dropdownMenu) {
-            dropdownToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                // Close all other dropdowns
-                dropdowns.forEach(function(otherDropdown) {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.querySelector('.custom-dropdown-menu')?.classList.remove('show');
-                    }
-                });
-                // Toggle the current dropdown
-                dropdownMenu.classList.toggle('show');
-            });
-        }
-    });
-
-    // Close dropdowns and vertical navbar when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.custom-dropdown') && !e.target.closest('#navbar-vertical') && !e.target.closest('.custom-nav-toggle')) {
-            document.querySelectorAll('.custom-dropdown-menu.show').forEach(function(menu) {
-                menu.classList.remove('show');
-            });
-            verticalNavbar.classList.remove('show');
-            document.body.classList.remove('navbar-vertical-open');
-        }
-    });
 
     // Toggle sublinks
     const navItems = document.querySelectorAll('.custom-nav-item');
@@ -905,5 +871,4 @@
         }
     });
 });
-
 </script>
