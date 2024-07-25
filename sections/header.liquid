@@ -780,7 +780,10 @@
 .custom-nav-link:hover {
     color: #D19C97;
 }
-
+.custom-nav-list.show {
+  max-height: 300px; /* Adjust this value to the desired scrollable height */
+  overflow-y: auto; /* Adds vertical scroll if content exceeds max-height */
+}
 .custom-dropdown-menu {
     display: none;
     position: relative;
