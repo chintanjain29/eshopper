@@ -2,7 +2,7 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
 {{ 'quickview.css' | asset_url | stylesheet_tag }}
-<script src="{{'quickview.js'| asset_url }}"></script>
+<script src="{{'quickview.js'| asset_url }}" defer></script>
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
