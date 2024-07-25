@@ -53,7 +53,7 @@
         color: #D19C97;
       }
 </style>
-<script>
+{% comment %} <script>
   document.addEventListener('DOMContentLoaded', () => {
     const productId = '{{ productId }}';
     const wishlistButton = document.getElementById(`wishlist-${productId}`);
@@ -80,7 +80,7 @@
       updateButtonAppearance();
     });
   });
-  </script>
+  </script> {% endcomment %}
 
 {% comment %} <script>
    $(document).ready(function(){
