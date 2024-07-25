@@ -833,42 +833,79 @@
   document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.custom-nav-toggle');
     const navList = document.querySelector('.custom-nav-list');
-
+    
     if (navToggle && navList) {
-        // Set the initial state to open
-        navList.classList.add('show');
-        navToggle.querySelector('i').classList.add('fa-angle-up');
-
-        navToggle.addEventListener('click', function() {
-            navList.classList.toggle('show');
-            navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
+        // Function to open the navigation
+        function openNav() {
+            navList.classList.add('show');
+            navToggle.querySelector('i').classList.add('fa-angle-up');
+        }
+        
+        // Function to close the navigation
+        function closeNav() {
+            navList.classList.remove('show');
+            navToggle.querySelector('i').classList.remove('fa-angle-up');
+        }
+        
+        // Open by default on home page
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+            openNav();
+        }
+        
+        // Toggle navigation on click
+        navToggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            navList.classList.contains('show') ? closeNav() : openNav();
         });
-
+        
         // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
             if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
-                navList.classList.remove('show');
-                navToggle.querySelector('i').classList.remove('fa-angle-up'); // Ensure the icon class is reset
+                closeNav();
             }
         });
+        
+        // Prevent closing when clicking inside the nav list
+        navList.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
     }
-
-    // Toggle sublinks
+    
+    // Toggle sublinks with smooth animation
     const navItems = document.querySelectorAll('.custom-nav-item');
     navItems.forEach(item => {
         const subMenu = item.querySelector('.custom-dropdown-menu');
         if (subMenu) {
             const link = item.querySelector('.custom-nav-link');
             link.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
-                item.classList.toggle('active');
+                event.preventDefault();
+                event.stopPropagation();
+                
                 navItems.forEach(otherItem => {
-                    if (otherItem !== item) {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
+                        otherItem.querySelector('.custom-dropdown-menu').style.maxHeight = '0px';
                     }
                 });
+                
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
+                } else {
+                    subMenu.style.maxHeight = '0px';
+                }
             });
         }
+    });
+    
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
 });
 </script>
