@@ -1,34 +1,55 @@
 <style>
-    .b1 {
-        font-family: Arial, sans-serif;
+    b1 {
+        font-family: 'Arial', sans-serif;
         line-height: 1.6;
         color: #333;
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
+        background-color: #f4f4f4;
     }
     h1 {
+        text-align: center;
         color: #2c3e50;
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
+    .faq-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
     }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    .faq-section {
-        margin-bottom: 30px;
+    .faq-item {
+        border-bottom: 1px solid #e0e0e0;
     }
     .faq-question {
         font-weight: bold;
-        color: #2980b9;
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s ease;
+    }
+    .faq-question:hover {
+        background-color: #f9f9f9;
+    }
+    .faq-question::after {
+        content: '+';
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+    .faq-question.active::after {
+        transform: rotate(45deg);
+    }
+    .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-answer.active {
+        max-height: 1000px;
+        padding: 20px;
     }
     .custom-content {
         display: flex;
@@ -69,67 +90,8 @@
           </div>
         </div>
       </div>
-      <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Clothing Store FAQs</title>
-            <style>
-                body {
-                    font-family: 'Arial', sans-serif;
-                    line-height: 1.6;
-                    color: #333;
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #f4f4f4;
-                }
-                h1 {
-                    text-align: center;
-                    color: #2c3e50;
-                }
-                .faq-container {
-                    background-color: #fff;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                    overflow: hidden;
-                }
-                .faq-item {
-                    border-bottom: 1px solid #e0e0e0;
-                }
-                .faq-question {
-                    font-weight: bold;
-                    padding: 20px;
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    transition: background-color 0.3s ease;
-                }
-                .faq-question:hover {
-                    background-color: #f9f9f9;
-                }
-                .faq-question::after {
-                    content: '+';
-                    font-size: 20px;
-                    transition: transform 0.3s ease;
-                }
-                .faq-question.active::after {
-                    transform: rotate(45deg);
-                }
-                .faq-answer {
-                    padding: 0 20px;
-                    max-height: 0;
-                    overflow: hidden;
-                    transition: max-height 0.3s ease, padding 0.3s ease;
-                }
-                .faq-answer.active {
-                    max-height: 1000px;
-                    padding: 20px;
-                }
-            </style>
-        </head>
+    
+    
 <div class ="b1">
             <h1>Clothing Store FAQs</h1>
             <div class="faq-container">
