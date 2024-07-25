@@ -1,4 +1,5 @@
-<div class="page-width"><div class="custom-block" style="background-color: #EDF1FF !important;">
+<div class="page-width">
+  <div class="custom-block" style="background-color: #EDF1FF !important;">
   {% for block in section.blocks %}
     {% if block.type == 'email_input' %}
       <div class="section-email">
@@ -29,6 +30,7 @@
       </form>
     {% endif %}
   {% endfor %}
+</div>
 </div>
 <style>
   .custom-block {
