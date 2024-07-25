@@ -33,6 +33,14 @@
       </a>
     </div>
   </header>
+  <script>// In another part of your project
+  function displayWishlistCount() {
+    let count = getWishlistCount();
+    document.getElementById('wishlist-count-display').textContent = count;
+  }
+  
+  // Call this function when you need to update the count
+  displayWishlistCount();</script>
 </body>
 
 <style>
