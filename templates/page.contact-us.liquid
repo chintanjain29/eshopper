@@ -64,137 +64,134 @@
 
 <style>
   .one {
-    display: flex;
-    justify-content: space-between; /* Changed from margin-left */
-    padding: 0 100px 50px; /* Added horizontal padding */
-  }
-  
-  .two {
-    margin-left: 50px; /* Reduced from 150px */
-  }
-  .contact-page {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  .contact-form label {
-    display: block;
-    margin-top: 20px;
-  }
-  .contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 15px; /* Increased from 10px */
-    margin-top: 15px;
-    border: 1px solid #ccc; /* Added border */
-    border-radius: 4px; /* Added border-radius */
-  }
-.btn{
-  padding-top:1rem;
-  padding-bottom:1rem;
-  padding-right:2rem;
-  padding-left:2rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 100px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-    .btn {
-    display: inline-block;
-    font-weight: 400;
-    color: #6F6F6F;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
-   .btn-primary {
-      color: #212529;
-      background-color: #D19C97;
-      border-color: #D19C97;
-    }
+.two {
+  margin-left: 50px;
+  flex: 1;
+}
 
-  .btn-primary:hover {
-    color: #fff;
-    background-color: #c5837c;
-    order-color: #c17a74;
-    }
+.contact-page {
+  max-width: 500px;
+  width: 100%;
+}
 
-  .btn-primary:focus, .btn-primary.focus {
-    color: #fff;
-    background-color: #c5837c;
-    border-color: #c17a74;
-    box-shadow: 0 0 0 0.2rem rgba(183, 138, 135, 0.5);
-    }
+.contact-form label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #333;
+}
 
-  .btn-primary.disabled, .btn-primary:disabled {
-    color: #212529;
-    background-color: #D19C97;
-    border-color: #D19C97;
-    }
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
 
-  .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
-  .show > .btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #c17a74;
-    border-color: #bd726b;
-    }
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: #D19C97;
+  outline: none;
+}
 
-  .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
-  .show > .btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(183, 138, 135, 0.5);
-    }
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: #D19C97;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
-    .section-title {
-      text-align: center;
-      padding: 0 10px;
-      position: relative; /* Ensure relative positioning for absolute element */
-    }
-    .section-title span {
-      position: relative;
-      background: #ffffff;
-      z-index: 1;
-    }
-    .section-title::before {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 35%;
-    width: 30%;
-    height: 2px;
-    margin-top: -1px;
-    background: #1C1C1C;
-  }       
+.btn:hover {
+  background-color: #c5837c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        
-  .custom-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 300px; /* Minimum height */
-  }
+.section-title {
+  text-align: center;
+  padding: 30px 10px;
+  position: relative;
+  margin-bottom: 40px;
+}
 
-  .custom-heading {
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem; /* Adjust margin bottom as needed */
-  }
+.section-title h2 {
+  font-size: 32px;
+  color: #333;
+}
 
-  .custom-breadcrumb {
-      display: inline-flex;
-  }
+.section-title span {
+  position: relative;
+  background: #ffffff;
+  padding: 0 20px;
+  z-index: 1;
+}
 
-  .custom-breadcrumb a {
-      text-decoration: none; /* Remove default underline */
-      color: inherit; /* Inherit text color */
-      transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition for color and underline */
-  }
+.section-title::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 2px;
+  background: #D19C97;
+  transform: translate(-50%, -50%);
+}
 
-  .custom-breadcrumb a:hover {
-      color: #D19C97; /* Change color on hover */
-      border-bottom: 1px solid #D19C97; /* Underline on hover */
-  }
+.custom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.custom-heading {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-size: 28px;
+  color: #333;
+}
+
+.custom-breadcrumb {
+  display: inline-flex;
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.custom-breadcrumb a {
+  text-decoration: none;
+  color: #666;
+  transition: color 0.3s, border-bottom-color 0.3s;
+  font-weight: 500;
+}
+
+.custom-breadcrumb a:hover {
+  color: #D19C97;
+  border-bottom: 1px solid #D19C97;
+}
 </style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
