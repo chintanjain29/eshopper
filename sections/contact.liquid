@@ -6,16 +6,15 @@
         <p>{{ block.settings.txtarea }}</p>
       </div>
     {% endif %}
-
+    
     {% if block.type == 'svg_icon_with_text' %}
-      <div>
-        <span>{{ block.settings.svg_icon }}</span>
-        <span>{{ block.settings.icon_text }} </span>
+      <div class="icon-text-container">
+        <span class="icon">{{ block.settings.svg_icon }}</span>
+        <span class="text">{{ block.settings.icon_text }}</span>
       </div>
     {% endif %}
   {% endfor %}
 </div>
-
 {% schema %}
 {
   "name": "Custom-contact",
