@@ -829,11 +829,15 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.custom-nav-toggle');
     const navList = document.querySelector('.custom-nav-list');
 
     if (navToggle && navList) {
+        // Set the initial state to open
+        navList.classList.add('show');
+        navToggle.querySelector('i').classList.add('fa-angle-up');
+
         navToggle.addEventListener('click', function() {
             navList.classList.toggle('show');
             navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
