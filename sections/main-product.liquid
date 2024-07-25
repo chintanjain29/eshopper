@@ -37,37 +37,7 @@
       }
     }
   {%- endstyle -%}
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.addEventListener('click', (event) => {
-        if (event.target.closest('.wishlist-button')) {
-          const wishlistButton = event.target.closest('.wishlist-button');
-          const productId = wishlistButton.id.split('-')[1];
-          
-          if (localStorage.getItem(`wishId-${productId}`)) {
-            localStorage.removeItem(`wishId-${productId}`);
-          } else {
-            localStorage.setItem(`wishId-${productId}`, productId);
-          }
-          updateButtonAppearance(wishlistButton, productId);
-        }
-      });
-    
-      function updateButtonAppearance(button, productId) {
-        if (localStorage.getItem(`wishId-${productId}`)) {
-          button.classList.add('active');
-        } else {
-          button.classList.remove('active');
-        }
-      }
-    
-      // Initial check for all wishlist buttons
-      document.querySelectorAll('.wishlist-button').forEach(button => {
-        const productId = button.id.split('-')[1];
-        updateButtonAppearance(button, productId);
-      });
-    });
-  </script>
+  
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -112,7 +82,6 @@
   </div>
 
   <div class="page-width">
-    {% render 'wish', productId: card_product.id %}
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
