@@ -152,20 +152,16 @@
             position: relative; /* Ensure relative positioning for absolute element */
           }
 
-        .section-title span {
-          position: relative;
-          background: #ffffff;
-          z-index: 1;
-        }
+        
         .section-title::before {
-        position: absolute;
-        content: "";
-        top: 50%;
-        left: 35%;
-        width: 30%;
-        height: 2px;
-        margin-top: -1px;
-        background: #1C1C1C;
+          left: 50%; /* Changed from 35% */
+          width: 60%; /* Increased from 30% */
+          transform: translateX(-50%); /* Center the line */
+        }
+        
+        .section-title span {
+          padding: 0 15px; /* Added padding to separate text from line */
+        }
       }
   .custom-content {
       display: flex;
