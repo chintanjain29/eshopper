@@ -69,47 +69,139 @@
           </div>
         </div>
       </div>
-       
-<div class= "b1">
-<h1>Frequently Asked Questions</h1>
-
-<table>
-    <tr>
-        <th>Topic</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>Shipping & Delivery</td>
-        <td>Information about shipping methods and delivery times</td>
-    </tr>
-    <tr>
-        <td>Returns & Exchanges</td>
-        <td>Our policies for returns and exchanges</td>
-    </tr>
-    <tr>
-        <td>Product Care</td>
-        <td>Instructions for maintaining your purchases</td>
-    </tr>
-    <tr>
-        <td>Sizing</td>
-        <td>Guide to finding the right size for you</td>
-    </tr>
-    <tr>
-        <td>Payment Methods</td>
-        <td>Accepted forms of payment</td>
-    </tr>
-</table>
-
-<div class="faq-section">
-    <p class="faq-question">Q: What are your shipping options?</p>
-    <p>A: We offer standard shipping (5-7 business days) and express shipping (2-3 business days). Shipping costs vary based on your location and the shipping method chosen.</p>
-</div>
-
-<div class="faq-section">
-    <p class="faq-question">Q: What is your return policy?</p>
-    <p>A: We accept returns within 30 days of purchase for unused items in their original packaging. Please refer to our Returns & Exchanges page for more details.</p>
-</div>
-
-<!-- Add more FAQ sections as needed -->
-
+      <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Clothing Store FAQs</title>
+            <style>
+                body {
+                    font-family: 'Arial', sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #f4f4f4;
+                }
+                h1 {
+                    text-align: center;
+                    color: #2c3e50;
+                }
+                .faq-container {
+                    background-color: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    overflow: hidden;
+                }
+                .faq-item {
+                    border-bottom: 1px solid #e0e0e0;
+                }
+                .faq-question {
+                    font-weight: bold;
+                    padding: 20px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: background-color 0.3s ease;
+                }
+                .faq-question:hover {
+                    background-color: #f9f9f9;
+                }
+                .faq-question::after {
+                    content: '+';
+                    font-size: 20px;
+                    transition: transform 0.3s ease;
+                }
+                .faq-question.active::after {
+                    transform: rotate(45deg);
+                }
+                .faq-answer {
+                    padding: 0 20px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease, padding 0.3s ease;
+                }
+                .faq-answer.active {
+                    max-height: 1000px;
+                    padding: 20px;
+                }
+            </style>
+        </head>
+<div class ="b1">
+            <h1>Clothing Store FAQs</h1>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What are your store hours?</div>
+                    <div class="faq-answer">Our store is open Monday to Saturday from 10 AM to 9 PM, and on Sundays from 11 AM to 6 PM. We're closed on major holidays.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer online shopping?</div>
+                    <div class="faq-answer">Yes, we have a fully functional online store where you can browse and purchase all our products. We offer shipping to most countries.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is your return policy?</div>
+                    <div class="faq-answer">We offer a 30-day return policy for unworn items with original tags attached. Returns can be made in-store or by mail. Store credit or exchanges are always free, while refunds may be subject to a restocking fee.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer size exchanges?</div>
+                    <div class="faq-answer">Yes, we offer free size exchanges within 30 days of purchase, provided the item is unworn and has original tags attached. You can process exchanges in-store or through our online portal.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I track my order?</div>
+                    <div class="faq-answer">Once your order ships, you'll receive a tracking number via email. You can use this number on our website or the courier's website to track your package's progress.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer gift wrapping?</div>
+                    <div class="faq-answer">Yes, we offer gift wrapping services for a small additional fee. You can select this option during checkout for online orders, or request it in-store for purchases made there.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What payment methods do you accept?</div>
+                    <div class="faq-answer">We accept all major credit cards, debit cards, PayPal, and Apple Pay for online purchases. In-store, we also accept cash and gift cards.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you have a loyalty program?</div>
+                    <div class="faq-answer">Yes, we have a loyalty program where you earn points on every purchase. These points can be redeemed for discounts on future purchases. Sign up in-store or on our website.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I care for my garments?</div>
+                    <div class="faq-answer">Each garment comes with specific care instructions on the label. Generally, we recommend washing in cold water, avoiding bleach, and hanging to dry for most items to maintain their quality and longevity.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer alterations?</div>
+                    <div class="faq-answer">We offer basic alterations like hemming for pants and sleeves at a nominal fee. More complex alterations may be referred to our partnered tailor. Please inquire in-store for more details.</div>
+                </div>
+            </div>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const questions = document.querySelectorAll('.faq-question');
+                    
+                    questions.forEach(question => {
+                        question.addEventListener('click', () => {
+                            const answer = question.nextElementSibling;
+                            const isActive = question.classList.contains('active');
+                            
+                            // Close all other answers
+                            questions.forEach(q => {
+                                if (q !== question) {
+                                    q.classList.remove('active');
+                                    q.nextElementSibling.classList.remove('active');
+                                }
+                            });
+                            
+                            // Toggle the clicked question
+                            question.classList.toggle('active');
+                            answer.classList.toggle('active');
+                            
+                            // Smooth scroll to the question if it's not already visible
+                            if (!isActive) {
+                                question.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                        });
+                    });
+                });
+            </script>
 </div>
