@@ -3,14 +3,12 @@
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
 {{ 'quickview.css' | asset_url | stylesheet_tag }}
 
-
-
 {% assign collection = collections[section.settings.collection] %}
 
 <div class="page-carousel2">
   <div class="page-carousel">
     <h2>
-      <span>{{ section.settings.title }}</span>
+      <span style="width: auto;">{{ section.settings.title }}</span>
     </h2>
   </div>
 
@@ -19,34 +17,32 @@
       class="grid slick-slider product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
       role="list"
     >
-    {%- for product in collection.products -%}
-     
-      <div class="grid__item">
-        {% render 'card-product',
-          card_product: product,
-          media_aspect_ratio: section.settings.image_ratio,
-          image_shape: section.settings.image_shape,
-          show_secondary_image: section.settings.show_secondary_image,
-          show_vendor: section.settings.show_vendor,
-          show_rating: section.settings.show_rating,
-
-        %}
-      </div>
-    {%- endfor -%}
-  </div>
+      {%- for product in collection.products -%}
+        <div class="grid__item">
+          {% render 'card-product',
+            card_product: product,
+            media_aspect_ratio: section.settings.image_ratio,
+            image_shape: section.settings.image_shape,
+            show_secondary_image: section.settings.show_secondary_image,
+            show_vendor: section.settings.show_vendor,
+            show_rating: section.settings.show_rating
+          %}
+        </div>
+      {%- endfor -%}
+    </div>
   </div>
 </div>
 
 <script>
   $(".slick-slider").slick({
     slidesToShow: 4,
-    infinite:true,
+    infinite: true,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000
-   });
- 
+  });
 </script>
+
 {% schema %}
 {
   "name": "Product Carousel",
@@ -125,6 +121,7 @@
     background: #fff;
     z-index: 1;
     padding: 0 15px;
+    width: auto;
   }
   .page-carousel:before {
     position: absolute;
