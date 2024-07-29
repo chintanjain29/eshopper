@@ -204,4 +204,11 @@
           $('.empty-wishlist').hide();
       }
   }
+
+  // Get the count of items stored in local storage
+const localStorageItemCount = localStorage.length;
+
+// Update the HTML element with the count
+document.getElementById('localStorageCount').textContent = localStorageItemCount;
+
 </script>
