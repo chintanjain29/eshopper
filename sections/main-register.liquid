@@ -23,9 +23,13 @@
       <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
     </symbol>
   </svg>
-  <h1>
-    {{ 'customer.register.title' | t }}
-  </h1>
+
+  <div class="section-title">
+    <h1>
+      <span><b> {{ 'customer.register.title' | t }}</b></span>
+    </h1>
+  </div>
+
   {%- form 'create_customer', novalidate: 'novalidate' -%}
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
@@ -172,3 +176,34 @@
   ]
 }
 {% endschema %}
+<style>
+  .section-title {
+    text-align: center;
+    padding: 30px 10px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+  
+  .section-title h2 {
+    font-size: 32px;
+    color: #333;
+  }
+  
+  .section-title span {
+    position: relative;
+    background: #ffffff;
+    padding: 0 20px;
+    z-index: 1;
+  }
+  
+  .section-title::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 2px;
+    background: #D19C97;
+    transform: translate(-50%, -50%);
+  }
+</style>
