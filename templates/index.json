@@ -117,8 +117,8 @@
           "type": "text",
           "settings": {
             "offer_image": "shopify:\/\/shop_images\/offer-2.png",
-            "offer_title": "winter collection",
-            "offer_subtitle": "20% off on all products",
+            "offer_title": "WINTER COLLECTION",
+            "offer_subtitle": "20% OFF ON ALL PRODUCTS",
             "offer_link": "shopify:\/\/products\/colorful-stylish-shirt",
             "offer_button_text": "Buy now",
             "logo_aligment": "right"
