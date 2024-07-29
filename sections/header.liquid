@@ -832,44 +832,52 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.custom-nav-toggle');
-    const navList = document.querySelector('.custom-nav-list');
-
-    if (navToggle && navList) {
-        // Set the initial state to open
-        navList.classList.add('show');
-        navToggle.querySelector('i').classList.add('fa-angle-up');
-
-        navToggle.addEventListener('click', function() {
-            navList.classList.toggle('show');
-            navToggle.querySelector('i').classList.toggle('fa-angle-up'); // Toggle the icon class for collapse effect
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
-                navList.classList.remove('show');
-                navToggle.querySelector('i').classList.remove('fa-angle-up'); // Ensure the icon class is reset
-            }
-        });
-    }
-
-    // Toggle sublinks
-    const navItems = document.querySelectorAll('.custom-nav-item');
-    navItems.forEach(item => {
-        const subMenu = item.querySelector('.custom-dropdown-menu');
-        if (subMenu) {
-            const link = item.querySelector('.custom-nav-link');
-            link.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
-                item.classList.toggle('active');
-                navItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-            });
-        }
-    });
-});
-</script>
+      const navToggle = document.querySelector('.custom-nav-toggle');
+      const navList = document.querySelector('.custom-nav-list');
+      
+      if (navToggle && navList) {
+          // Check if we're on the home page
+          const isHomePage = {% if template == 'index' %}true{% else %}false{% endif %};
+          
+          // Set the initial state based on whether it's the home page
+          if (isHomePage) {
+              navList.classList.add('show');
+              navToggle.querySelector('i').classList.add('fa-angle-up');
+          } else {
+              navList.classList.remove('show');
+              navToggle.querySelector('i').classList.remove('fa-angle-up');
+          }
+          
+          navToggle.addEventListener('click', function() {
+              navList.classList.toggle('show');
+              navToggle.querySelector('i').classList.toggle('fa-angle-up');
+          });
+          
+          // Close dropdown when clicking outside
+          document.addEventListener('click', function(event) {
+              if (!navToggle.contains(event.target) && !navList.contains(event.target)) {
+                  navList.classList.remove('show');
+                  navToggle.querySelector('i').classList.remove('fa-angle-up');
+              }
+          });
+      }
+      
+      // Toggle sublinks
+      const navItems = document.querySelectorAll('.custom-nav-item');
+      navItems.forEach(item => {
+          const subMenu = item.querySelector('.custom-dropdown-menu');
+          if (subMenu) {
+              const link = item.querySelector('.custom-nav-link');
+              link.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  item.classList.toggle('active');
+                  navItems.forEach(otherItem => {
+                      if (otherItem !== item) {
+                          otherItem.classList.remove('active');
+                      }
+                  });
+              });
+          }
+      });
+  });
+  </script>
