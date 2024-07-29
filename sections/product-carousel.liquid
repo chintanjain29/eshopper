@@ -3,18 +3,32 @@
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
 {{ 'quickview.css' | asset_url | stylesheet_tag }}
 
+
+
 {% assign collection = collections[section.settings.collection] %}
 
 <div class="page-carousel2">
+  9999999
   <div class="page-carousel">
     <h2>
       <span>{{ section.settings.title }}</span>
     </h2>
   </div>
-
+123456
   <div class="product-test">
     {%- for product in collection.products -%}
-    <div>{{ product.title }}</div>
+     
+      <div class="product-slide">
+        {% render 'card-product',
+          card_product: product,
+          media_aspect_ratio: section.settings.image_ratio,
+          image_shape: section.settings.image_shape,
+          show_secondary_image: section.settings.show_secondary_image,
+          show_vendor: section.settings.show_vendor,
+          show_rating: section.settings.show_rating,
+
+        %}
+      </div>
     {%- endfor -%}
   </div>
 </div>
