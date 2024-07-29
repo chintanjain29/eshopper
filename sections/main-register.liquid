@@ -25,13 +25,11 @@
   </svg>
 
   <div class="section-title">
-    <h2>
+    <h1>
       <span><b> {{ 'customer.register.title' | t }}</b></span>
-    </h2>
+    </h1>
   </div>
-  <h1>
-   
-  </h1>
+
   {%- form 'create_customer', novalidate: 'novalidate' -%}
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
