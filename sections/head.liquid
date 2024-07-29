@@ -139,32 +139,27 @@
   function countWishItems() {
     let wishCount = 0;
 
-    // Loop through all items in local storage
     for (let i = 0; i < localStorage.length; i++) {
-        // Get the key
+
         let key = localStorage.key(i);
-        // Check if the key matches the pattern
+  
         if (key.startsWith("wishId-")) {
             wishCount++;
         }
     }
 
-    // Update the HTML element with the count
     document.getElementById('wishCount').textContent = wishCount;
 }
 
-// Call the function initially to set the count
 countWishItems();
 
-// Set an interval to update the count every 5 seconds (5000 milliseconds)
-setInterval(countWishItems, 2000);
 
-// Alternatively, you can set up an event listener for local storage changes if needed
+setInterval(countWishItems, 5000);
+
 window.addEventListener('storage', countWishItems);
-  // Get the count of items stored in local storage
+
 const localStorageItemCount = localStorage.length;
 
-// Update the HTML element with the count
 document.getElementById('localStorageCount').textContent = localStorageItemCount;
 
   </script>
