@@ -142,8 +142,8 @@
     "product_carousel_raGXPM": {
       "type": "product-carousel",
       "settings": {
-        "title": "You May Also Like",
-        "collection": "baby-dresses",
+        "title": "12326",
+        "collection": "all-collection",
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "show_vendor": false,
