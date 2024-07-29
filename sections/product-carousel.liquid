@@ -114,29 +114,37 @@
   .page-carousel2 {
     margin: 50px auto;
   }
-  .section-title {
-    text-align: center;
-    padding: 0 10px;
-    position: relative;
-    margin-bottom: 30px;
-  }
-  .section-title span {
-    position: relative;
-    background: #fff;
-    z-index: 1;
-    padding: 0 15px;
-  }
-  .section-title:before {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 2px;
-    margin-top: -1px;
-    background: #1C1C1C;
-  }
+  
+.section-title {
+  text-align: center;
+  padding: 30px 10px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  color: #333;
+}
+
+.section-title span {
+  position: relative;
+  background: #ffffff;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.section-title::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 2px;
+  background: #D19C97;
+  transform: translate(-50%, -50%);
+}
+
   .product-carousel .slick-slide {
     padding: 0 10px;
   }
