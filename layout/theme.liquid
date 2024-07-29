@@ -430,17 +430,6 @@
         toggleScrollButton();
       });
     </script>
-    {% comment %} <script>
-        $('.card-wrapper').slick({
-        dots: false,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: 'linear',
-        autoplaySpeed:3000
-      });
-    </script> {% endcomment %}
-
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
