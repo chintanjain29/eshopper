@@ -143,7 +143,12 @@
       "type": "product-carousel",
       "settings": {
         "title": "You May Also Like",
-        "collection": "all-collection"
+        "collection": "baby-dresses",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false
       }
     }
   },
