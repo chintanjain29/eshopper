@@ -38,6 +38,23 @@
       "settings": {
       }
     },
+    "icon_policy_cnHnNC": {
+      "type": "icon-policy",
+      "blocks": {
+        "svg_icon_with_text_7RfqXf": {
+          "type": "svg_icon_with_text",
+          "settings": {
+            "svg_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"25\" height=\"25\" viewbox=\"0 0 48 48\"><path fill=\"#D19C97\" fill-rule=\"evenodd\" stroke=\"#D19C97\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.3\" d=\"m4 24l5-5l10 10L39 9l5 5l-25 25z\" clip-rule=\"evenodd\"><\/path><\/svg>",
+            "icon_text": "<b>Quality Product<\/b>"
+          }
+        }
+      },
+      "block_order": [
+        "svg_icon_with_text_7RfqXf"
+      ],
+      "settings": {
+      }
+    },
     "collection_list_BG3MQw": {
       "type": "collection-list",
       "blocks": {
@@ -275,6 +292,7 @@
   },
   "order": [
     "slide_e73fKh",
+    "icon_policy_cnHnNC",
     "collection_list_BG3MQw",
     "offer_q9L6iY",
     "featured_collection_yrG8Bi",
