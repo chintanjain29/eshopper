@@ -26,8 +26,14 @@
     <!-- Add the slick-theme.css if you want default styling -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    >
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
@@ -406,7 +412,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         var scrollToTopBtn = document.getElementById('scrollToTopBtn');
         var header = document.querySelector('header'); // Adjust this selector if needed
-    
+
         function toggleScrollButton() {
           var headerBottom = header.offsetTop + header.offsetHeight;
           if (window.pageYOffset > headerBottom) {
@@ -415,17 +421,17 @@
             scrollToTopBtn.classList.remove('show');
           }
         }
-    
+
         window.addEventListener('scroll', toggleScrollButton);
         window.addEventListener('resize', toggleScrollButton);
-    
+
         scrollToTopBtn.addEventListener('click', function() {
           window.scrollTo({
             top: 0,
             behavior: 'smooth'
           });
         });
-    
+
         // Initial check
         toggleScrollButton();
       });
