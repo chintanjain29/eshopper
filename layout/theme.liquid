@@ -36,7 +36,19 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script>
-      flatpickr("input[type="date]", {});
+            config{
+          "disable": [
+              function(date) {
+                  // return true to disable
+                  return (date.getDay() === 0 || date.getDay() === 6);
+
+              }
+          ],
+          "locale": {
+              "firstDayOfWeek": 1 // start week on Monday
+          }
+      }
+            flatpickr("input[type="date]", config);
     </script>
 
     {% if page_description %}
