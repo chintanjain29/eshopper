@@ -342,7 +342,21 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-
+    <style>
+      .flatpickr-calendar {
+          font-family: Arial, sans-serif;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+      }
+      .flatpickr-day {
+          border-radius: 0;
+          font-weight: bold;
+      }
+      .saturday-rate {
+          display: block;
+          font-size: 0.8em;
+          color: #007bff;
+      }
+    </style>
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
