@@ -59,7 +59,34 @@
       console.log(selectedDates[0]);
     }
   });
-});            flatpickr("input[type="date]", {});
+});   
+      
+      
+      onDayCreate: function(dObj, dStr, fp, dayElem) {
+  const date = dayElem.dateObj;
+  let rate = 0;
+
+  // Check if it's a Saturday
+  if (date.getDay() === 6) {
+    rate = 12;
+  }
+
+  // Check for specific dates or date ranges for different rates
+  if (date.getTime() === new Date('2024-10-19').getTime()) {
+    rate = 15; // Special rate for this specific Saturday
+  }
+
+  if (rate > 0) {
+    const rateElement = document.createElement('span');
+    rateElement.classList.add('day-rate');
+    rateElement.textContent = `+$${rate}`;
+    dayElem.appendChild(rateElement);
+  }
+}
+      
+      
+      
+      flatpickr("input[type="date]", {});
     </script>
 
     {% if page_description %}
