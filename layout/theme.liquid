@@ -36,19 +36,30 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script>
-            config = {
-          "disable": [
-              function(date) {
-                  // return true to disable
-                  return (date.getDay() === 0 || date.getDay() === 6);
-
-              }
-          ],
-          "locale": {
-              "firstDayOfWeek": 1 // start week on Monday
-          }
+      document.addEventListener('DOMContentLoaded', function() {
+  const datepicker = flatpickr("#datepicker", {
+    inline: true,
+    minDate: "today",
+    maxDate: new Date().fp_incr(60), // Allow selecting dates up to 60 days in the future
+    defaultDate: "today",
+    
+    onDayCreate: function(dObj, dStr, fp, dayElem) {
+      // Check if the day is a Saturday
+      if (dayElem.dateObj.getDay() === 6) {
+        const saturdayRate = 12; // Set the rate for Saturdays
+        const rateElement = document.createElement('span');
+        rateElement.classList.add('saturday-rate');
+        rateElement.textContent = `+$${saturdayRate}`;
+        dayElem.appendChild(rateElement);
       }
-            flatpickr("input[type="date]", config);
+    },
+    
+    onChange: function(selectedDates, dateStr, instance) {
+      // Handle date selection here
+      console.log(selectedDates[0]);
+    }
+  });
+});            flatpickr("input[type="date]", {});
     </script>
 
     {% if page_description %}
